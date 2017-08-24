@@ -13,7 +13,7 @@
           <input name="id" type="hidden" value="{{$content['id']}}"></input>
           <div class="form-group">
               <label or="Nama">Item Name</label>
-              <input name="name" class="form-control" type="text" maxlength="255" value="{{$content['name']}}"></input>
+              <input name="name" class="form-control" type="text" maxlength="255" value="{{$content['name']}}" required></input>
           </div>
           <div class="form-group">
               <label for="satuan">Unit</label>
@@ -36,7 +36,7 @@
           <div class="zip-code-group form-group">
               <label for="satuan">Price</label>
               <div class="input-container">
-                  <input name="price" class="form-control" type="text" maxlength="10" value="{{$content['price']}}"></input>
+                  <input name="price" class="form-control" type="text" maxlength="10" value="{{$content['price']}}" required></input>
               </div>
           </div>
           <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit">
