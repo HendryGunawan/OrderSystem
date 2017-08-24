@@ -38,6 +38,13 @@ class AccountsController extends Controller
     public function postAdd(Request $request)
     {
         $response = $request->all();
+        $check_account = User::where('email', $response['email'])->first();
+
+        if(!empty($check_account))
+        {
+            flash('Account already used')->error();
+            return redirect()->route('account');
+        }
         if($response['password'] != $response['password_confirm'])
         {
             flash('Password Not Match')->error();

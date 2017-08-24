@@ -16,7 +16,7 @@
               <input name="name" class="form-control" type="text" maxlength="255" value="<?php echo $data['name']; ?>" readonly></input>
           </div>
           <div class="form-group">
-              <label or="Nama">Email</label>
+              <label or="Nama">Username</label>
               <input name="email" class="form-control" type="text" maxlength="255" value="<?php echo $data['email']; ?>" readonly></input>
           </div>
           <div class="form-group">
