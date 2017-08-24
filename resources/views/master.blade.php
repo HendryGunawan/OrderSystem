@@ -38,6 +38,22 @@
         <nav class="pushy pushy-left" data-focus="#first-link">
             <div class="pushy-content">
                 <ul>
+                    <?php
+                    if(Auth::user()->super_admin)
+                    {
+                        ?>
+                    <li class="pushy-submenu">
+                        <button>Price Update</button>
+                        <ul>
+                            <li class="pushy-link"><a href="{{ route('folding_gate') }}">Folding Gate</a></li>
+                            <li class="pushy-link"><a href="{{ route('folding_gate_sparepart') }}">Folding Gate Spare Part</a></li>
+                            <li class="pushy-link"><a href="{{ route('rolling_door') }}">Rolling Door</a></li>
+                            <li class="pushy-link"><a href="{{ route('rolling_door_sparepart') }}">Rolling Door Spare Part</a></li>
+                        </ul>
+                    </li>
+                    <?php
+                    }
+                    ?>
                     <li class="pushy-submenu">
                         <button id="first-link">Order List</button>
                         <ul>
@@ -56,22 +72,6 @@
                             <li class="pushy-link"><a href="#">Rolling Door Spare Part</a></li>
                         </ul>
                     </li> -->
-                    <?php
-                    if(Auth::user()->super_admin)
-                    {
-                        ?>
-                    <li class="pushy-submenu">
-                        <button>Price Update</button>
-                        <ul>
-                            <li class="pushy-link"><a href="{{ route('folding_gate') }}">Folding Gate</a></li>
-                            <li class="pushy-link"><a href="{{ route('folding_gate_sparepart') }}">Folding Gate Spare Part</a></li>
-                            <li class="pushy-link"><a href="{{ route('rolling_door') }}">Rolling Door</a></li>
-                            <li class="pushy-link"><a href="{{ route('rolling_door_sparepart') }}">Rolling Door Spare Part</a></li>
-                        </ul>
-                    </li>
-                    <?php
-                    }
-                    ?>
                     <li class="pushy-submenu">
                         <button id="second-link">Account</button>
                         <ul>
