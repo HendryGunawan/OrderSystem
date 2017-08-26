@@ -21,7 +21,7 @@
           </div>
           <div class="form-group">
               <label for="satuan">Role</label>
-              <input name="super_admin" class="form-control" type="text" maxlength="255" value="<?php echo $data['super_admin']==1? 'Super Admin' : 'Admin'; ?>" readonly></input>
+              <input name="role_id" class="form-control" type="text" maxlength="255" value="<?php echo $data['RoleName']; ?>" readonly></input>
           </div>
           <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit">
               <span class="align-middle">Delete</span>

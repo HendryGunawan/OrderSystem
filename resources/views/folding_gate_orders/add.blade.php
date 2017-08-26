@@ -42,7 +42,7 @@
                     ?>
                     <tr data-id="<?php echo $i ?>">
                       <td>
-                          <select name="order[<?php echo $i ?>][folding_gate_id]" class="form-control" onclick="checkprice(this)">
+                          <select name="order[<?php echo $i ?>][folding_gate_id]" class="form-control" onclick="checkprice(this)" <?php echo $i==1? 'required':''?>  >
                               <option value="" selected="selected"></option>
                               <?php
                                 foreach ($option as $value) {
@@ -52,16 +52,16 @@
                           </select>
                       </td>
                       <td>
-                          <input type="number" id="price-<?php echo $i ?>" class="form-control" name="order[<?php echo $i ?>][price]" min="0">
+                          <input type="number" id="price-<?php echo $i ?>" class="form-control" name="order[<?php echo $i ?>][price]" min="0" <?php echo $i==1? 'required':''?>>
                       </td>
                       <td>
                           <input type="text" id="unit-<?php echo $i ?>" class="form-control" readonly>
                       </td>
                       <td>
-                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $i ?>][qty]">
+                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $i ?>][qty]" <?php echo $i==1? 'required':''?>>
                       </td>
                       <td>
-                          <input type="text" id="fee-4" class="form-control" name="order[<?php echo $i ?>][size]">
+                          <input type="text" id="fee-4" class="form-control" name="order[<?php echo $i ?>][size]" <?php echo $i==1? 'required':''?>>
                       </td>
                   </tr>
                   <?php
@@ -101,6 +101,21 @@ function checkprice(row)
 }
 
 $('#datetimepicker2').datetimepicker({ format: 'DD-MM-YYYY' });
+
+
+$("#datetimepicker2").keydown(function (e) {
+    // Allow: backspace, delete, tab, escape, enter and .
+    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1) 
+    {
+       // let it happen, don't do anything
+       return;
+    }
+    else
+    {
+      e.preventDefault();
+    }
+});
+
 </script>
 
 @endsection

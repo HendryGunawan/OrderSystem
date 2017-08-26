@@ -27,8 +27,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function role()
+    {
+        return $this->belongsTo('App\Http\Models\Role', 'role_id', 'id');
+    }
+
+
     public static function getData($id){
-        $query = self::where('id', $id)
+        $query = self::where('users.id', $id)
+                     ->join('roles', 'users.role_id', '=', 'roles.id')
+                     ->select('users.*', 'roles.name as RoleName')
                      ->first();
         if(!empty($query)){
             return $query;
@@ -38,22 +46,13 @@ class User extends Authenticatable
     }
 
     public static function getDataTable(){
-        $query =  self::where('delete_flag', 0)
-                      ->orderBy('id', 'asc')
+        $query =  self::orderBy('id', 'asc')
+                      ->join('roles', 'users.role_id', '=', 'roles.id')
+                      ->select('users.*', 'roles.name as RoleName')
                       ->get();
+
         if(!empty($query))
         {
-            foreach($query as $key=> $val)
-            {
-                if($query[$key]['super_admin'] ==1)
-                {
-                    $query[$key]['role'] = 'Super Admin';
-                }
-                else
-                {
-                    $query[$key]['role'] = 'Admin';
-                }
-            }
             return $query;
         }
         else

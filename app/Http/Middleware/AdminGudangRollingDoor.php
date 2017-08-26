@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Auth;
 
-class super_admin
+class AdminGudangRollingDoor
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,14 @@ class super_admin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->super_admin==0)
+        if(strtolower(Auth::user()->role->name) =='super admin' || strtolower(Auth::user()->role->name) =='admin gudang rolling door')
+        {
+            return $next($request);
+        }
+        else
         {
             return redirect()->route('unauthorized');
         }
-        return $next($request);
+        
     }
 }

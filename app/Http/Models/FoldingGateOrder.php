@@ -41,6 +41,17 @@ class FoldingGateOrder extends Model
         }
     }
 
+    //Untuk mendapatkan option pemakaian barang yang belum pernah digunakan
+    public static function getOptionUsage($id=array()){
+        $query = self::whereNotIn('folding_gate_orders.id', $id)
+                     ->get();
+        if(!empty($query)){
+            return $query;
+        }else{
+            return false;
+        }
+    }
+
     public static function getDataTable(){
         $query =  self::where('folding_gate_orders.delete_flag', 0)
                       ->orderBy('id', 'asc')

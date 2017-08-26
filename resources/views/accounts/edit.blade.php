@@ -29,17 +29,18 @@
           </div>
           <div class="form-group">
               <label for="satuan">Role</label>
-              <select name="super_admin" class="form-control">
+              <select name="role_id" class="form-control">
                 <?php
-                if($content['super_admin'] == 0)
-                {
-                  echo '<option value="0" selected="selected">Admin</option>
-                        <option value="1">Super Admin</option>';
-                }
-                else
-                {
-                  echo '<option value="0">Admin</option>
-                        <option value="1" selected="selected">Super Admin</option>';
+                foreach ($option as $value) {
+                    if($value['id'] == $content['role_id'])
+                    {
+                      echo '<option value="'.$value['id'].'" selected="selected">'.$value['name'].'</option>';
+                    }
+                    else
+                    {
+                      echo '<option value="'.$value['id'].'">'.$value['name'].'</option>';
+                    }
+                    
                 }
                 ?>
               </select>

@@ -5,14 +5,14 @@ namespace App\Http\Models;
 use Illuminate\Database\Eloquent\Model;
 use Auth;
 
-class RollingDoorOrder extends Model
+class GoodUsageRollingDoor extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'rolling_door_orders';
+    protected $table = 'good_usage_rolling_doors';
 
     /**
      * The attributes that are mass assignable.
@@ -30,9 +30,9 @@ class RollingDoorOrder extends Model
 
     public $timestamps = true;
 
-
+    //Fungsi untuk select order yang sudah pernah dipakai sehingga tidak bisa dipilih lagi
     public static function getData($id){
-        $query = self::where('rolling_door_orders.id', $id)
+        $query = self::where('good_usage_rolling_doors.id', $id)
                      ->first();
         if(!empty($query)){
             return $query;
@@ -41,9 +41,10 @@ class RollingDoorOrder extends Model
         }
     }
 
-    //Untuk mendapatkan option pemakaian barang yang belum pernah digunakan
-    public static function getOptionUsage($id=array()){
-        $query = self::whereNotIn('rolling_door_orders.id', $id)
+    //Fungsi untuk select order yang sudah pernah dipakai sehingga tidak bisa dipilih lagi
+    public static function getDataUsage(){
+        $query = self::select('rolling_door_order_id')
+                     ->where('delete_flag', 0)
                      ->get();
         if(!empty($query)){
             return $query;
@@ -53,24 +54,20 @@ class RollingDoorOrder extends Model
     }
 
     public static function getDataTable(){
-        $query =  self::where('rolling_door_orders.delete_flag', 0)
+        $query =  self::where('good_usage_rolling_doors.delete_flag', 0)
                       ->orderBy('id', 'asc')
                       ->get();
         if(!empty($query))
         {
             foreach($query as $key=> $val)
             {
-                if(isset($query[$key]['id']))
+                if(isset($query[$key]['rolling_door_order_id']))
                 {
-                    $query[$key]['order_number'] = 'RD-'.$val['id'];
+                    $query[$key]['order_number'] = 'RD-'. $query[$key]['rolling_door_order_id'];
                 }
-                if(isset($query[$key]['date']))
+                if(isset($query[$key]['created_at']))
                 {
-                    $query[$key]['order_date'] = date('d-m-Y', strtotime($query[$key]['date']));
-                }
-                if(isset($query[$key]['grand_total']))
-                {
-                    $query[$key]['grand_total'] = number_format($query[$key]['grand_total']);
+                    $query[$key]['created'] = date('d-m-Y', strtotime($query[$key]['created_at']));
                 }
             }
             return $query;

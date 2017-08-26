@@ -34,7 +34,7 @@ $(function() {
         columns: [
             { data: 'name', name: 'name' },
             { data: 'email', name: 'email' },
-            { data: 'role', name: 'role' },
+            { data: 'RoleName', name: 'RoleName' },
             {
                 field: 'operate',
                 align: 'center',

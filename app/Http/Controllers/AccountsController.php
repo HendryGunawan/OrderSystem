@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Datatables;
 use App\Http\Models\Unit;
+use App\Http\Models\Role;
 
 class AccountsController extends Controller
 {
@@ -32,7 +33,11 @@ class AccountsController extends Controller
 
     public function getAdd()
     {
-        return view('accounts.add');
+        $option = Role::getData();
+        $data = [
+                'option' => $option,
+            ];
+        return view('accounts.add', $data);
     }
 
     public function postAdd(Request $request)
@@ -42,7 +47,7 @@ class AccountsController extends Controller
 
         if(!empty($check_account))
         {
-            flash('Account already used')->error();
+            flash('Username already used')->error();
             return redirect()->route('account');
         }
         if($response['password'] != $response['password_confirm'])
@@ -55,7 +60,7 @@ class AccountsController extends Controller
         $User->name = $response['name'];
         $User->email = $response['email'];
         $User->password = bcrypt($response['password']);
-        $User->super_admin = $response['super_admin'];
+        $User->role_id = $response['role_id'];
         $User->delete_flag = 0;
         
         if($User->save()) {
@@ -82,9 +87,11 @@ class AccountsController extends Controller
             flash('Data not found')->error();
             return redirect()->route('account');
         }
+        $option = Role::getData();
 
         $data = [
-                'content' => $content
+                'content' => $content,
+                'option' => $option
             ];
         return view('accounts.edit', $data);
     }
@@ -97,7 +104,7 @@ class AccountsController extends Controller
         $email = $respons['email'];
         $password = $respons['password'];
         $password_confirm = $respons['password_confirm'];
-        $super_admin = $respons['super_admin'];
+        $role_id = $respons['role_id'];
 
         if($password != $password_confirm)
         {
@@ -111,7 +118,7 @@ class AccountsController extends Controller
                                         'name' => $name,
                                         'email' => $email,
                                         'password'  => bcrypt($password),
-                                        'super_admin' => $super_admin,
+                                        'role_id' => $role_id,
                                     ]);
 
         if($save) {
@@ -151,10 +158,7 @@ class AccountsController extends Controller
         $respons = $request->all();
         $id = $respons['id'];
 
-        $delete = User::where('id', $id)
-                                    ->update([
-                                        'delete_flag' => 1
-                                    ]);
+        $delete = User::where('id', $id)->delete();
 
         if($delete) {
             flash('Data succefully deleted')->success();

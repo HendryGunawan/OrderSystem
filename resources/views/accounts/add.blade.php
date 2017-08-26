@@ -28,9 +28,12 @@
           </div>
           <div class="form-group">
               <label for="satuan">Role</label>
-              <select name="super_admin" class="form-control">
-                <option value="0">Admin</option>
-                <option value="1">Super Admin</option>
+              <select name="role_id" class="form-control">
+                <?php
+                foreach ($option as $value) {
+                    echo '<option value="'.$value['id'].'">'.$value['name'].'</option>';
+                }
+                ?>
               </select>
           </div>
           <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit">

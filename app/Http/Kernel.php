@@ -55,7 +55,11 @@ class Kernel extends HttpKernel
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'super_admin' => \App\Http\Middleware\super_admin::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+
+        'AdminKasir' => \App\Http\Middleware\AdminKasir::class,
+        'AdminGudangFoldingGate' => \App\Http\Middleware\AdminGudangFoldingGate::class,
+        'AdminGudangRollingDoor' => \App\Http\Middleware\AdminGudangRollingDoor::class,
+        'SuperAdmin' => \App\Http\Middleware\SuperAdmin::class,
     ];
 }

@@ -26,6 +26,7 @@
         <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('js/moment-with-locales.js') }}"></script>
         <script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
+        <script src="{{ asset('js/handlebars.min.js') }}"></script>
         
         <!-- <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> -->
         <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script> -->
@@ -39,7 +40,7 @@
             <div class="pushy-content">
                 <ul>
                     <?php
-                    if(Auth::user()->super_admin)
+                    if(strtolower(Auth::user()->role->name) == 'super admin')
                     {
                         ?>
                     <li class="pushy-submenu">
@@ -53,6 +54,8 @@
                     </li>
                     <?php
                     }
+                    if(strtolower(Auth::user()->role->name) == 'super admin' || strtolower(Auth::user()->role->name) == 'admin kasir')
+                    {
                     ?>
                     <li class="pushy-submenu">
                         <button id="first-link">Order List</button>
@@ -63,6 +66,57 @@
                             <li class="pushy-link"><a href="{{ route('rolling_door_sparepart_order') }}">Rolling Door Spare Part</a></li>
                         </ul>
                     </li>
+                    <?php
+                    }
+                    if(strtolower(Auth::user()->role->name) == 'super admin' || strtolower(Auth::user()->role->name) == 'admin gudang folding gate' || strtolower(Auth::user()->role->name) == 'admin gudang rolling door')
+                            {
+                    ?>
+                    <li class="pushy-submenu">
+                        <button id="first-link">Good Receipt</button>
+                        <ul>
+                            <?php
+                            if(strtolower(Auth::user()->role->name) == 'super admin' || strtolower(Auth::user()->role->name) == 'admin gudang folding gate')
+                            {
+                            ?>
+                                <li class="pushy-link"><a href="{{ route('good_receipt_folding_gate') }}">Folding Gate</a></li>
+                            <?php
+                            }
+                            if(strtolower(Auth::user()->role->name) == 'super admin' || strtolower(Auth::user()->role->name) == 'admin gudang rolling door')
+                            {
+                            ?>
+                                <li class="pushy-link"><a href="{{ route('good_receipt_rolling_door') }}">Rolling Door</a></li>
+                            <?php
+                            }
+                            ?> 
+                        </ul>
+                    </li>
+                    <?php
+                    }
+                    if(strtolower(Auth::user()->role->name) == 'super admin' || strtolower(Auth::user()->role->name) == 'admin gudang folding gate' || strtolower(Auth::user()->role->name) == 'admin gudang rolling door')
+                            {
+                    ?>
+                    <li class="pushy-submenu">
+                        <button id="first-link">Good Usage</button>
+                        <ul>
+                            <?php
+                            if(strtolower(Auth::user()->role->name) == 'super admin' || strtolower(Auth::user()->role->name) == 'admin gudang folding gate')
+                            {
+                            ?>
+                                <li class="pushy-link"><a href="{{ route('good_usage_folding_gate') }}">Folding Gate</a></li>
+                            <?php
+                            }
+                            if(strtolower(Auth::user()->role->name) == 'super admin' || strtolower(Auth::user()->role->name) == 'admin gudang rolling door')
+                            {
+                            ?>
+                                <li class="pushy-link"><a href="{{ route('good_usage_rolling_door') }}">Rolling Door</a></li>
+                            <?php
+                            }
+                            ?> 
+                        </ul>
+                    </li>
+                    <?php
+                    }
+                    ?>
                    <!--  <li class="pushy-submenu">
                         <button>Create Order</button>
                         <ul>
