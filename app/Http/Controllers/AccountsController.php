@@ -61,7 +61,6 @@ class AccountsController extends Controller
         $User->email = $response['email'];
         $User->password = bcrypt($response['password']);
         $User->role_id = $response['role_id'];
-        $User->delete_flag = 0;
         
         if($User->save()) {
             flash('Account succefully saved')->success();

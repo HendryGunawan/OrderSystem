@@ -130,7 +130,7 @@
                         <button id="second-link">Account</button>
                         <ul>
                             <?php
-                            if(Auth::user()->super_admin)
+                            if(strtolower(Auth::user()->role->name) == 'super admin')
                             {
                             ?>
                             <li class="pushy-link"><a href="{{ route('account') }}">Manage Accounts</a></li>

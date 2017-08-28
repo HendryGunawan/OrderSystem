@@ -48,6 +48,31 @@ class FoldingGateOrdersController extends Controller
     public function postAdd(Request $request)
     {
         $response = $request->all();
+        $details = $response['order'];
+        $array_check = array();
+
+        if(!is_numeric($response['phone']))
+        {
+            flash('Phone number must be numbers only')->error();
+            return redirect()->route('folding_gate_order');
+        }
+
+        foreach($details as $val)
+        {
+            if($val['folding_gate_id'] == null)
+            {
+                continue;
+            }
+            if (in_array($val['folding_gate_id'], $array_check)) {
+                flash('Duplicate data found. Please try again')->error();
+                return redirect()->route('folding_gate_order');
+            }
+            else
+            {
+                $array_check[] = $val['folding_gate_id'];
+            }
+        }
+
         $FoldingGateOrder = new FoldingGateOrder();
         $FoldingGateOrder->name = $response['name'];
         $FoldingGateOrder->date = date('Y-m-d', strtotime($response['date']));
@@ -59,7 +84,6 @@ class FoldingGateOrdersController extends Controller
         if($FoldingGateOrder->save()) 
         {
             $id = $FoldingGateOrder->id;
-            $details = $response['order'];
             $grand_total=0;
             foreach($details as $detail)
             {
@@ -123,7 +147,31 @@ class FoldingGateOrdersController extends Controller
 
     public function postEdit(Request $request) {
         $response = $request->all();
+        $details = $response['order'];
         $id = $response['id'];
+        $array_check = array();
+
+        if(!is_numeric($response['phone']))
+        {
+            flash('Phone number must be numbers only')->error();
+            return redirect()->route('folding_gate_order');
+        }
+        foreach($details as $val)
+        {
+            if($val['folding_gate_id'] == null)
+            {
+                continue;
+            }
+            if (in_array($val['folding_gate_id'], $array_check)) {
+                flash('Duplicate data found. Please try again')->error();
+                return redirect()->route('folding_gate_order');
+            }
+            else
+            {
+                $array_check[] = $val['folding_gate_id'];
+            }
+        }
+
         $FoldingGateOrder = new FoldingGateOrder();
         $save = $FoldingGateOrder::where('id', $id)
                                     ->update([
@@ -136,7 +184,6 @@ class FoldingGateOrdersController extends Controller
         if($save) 
         {
             FoldingGateOrderDetail::where('folding_gate_order_id', $id)->delete();
-            $details = $response['order'];
             $grand_total=0;
             foreach($details as $detail)
             {

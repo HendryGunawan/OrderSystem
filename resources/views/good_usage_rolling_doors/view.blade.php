@@ -7,6 +7,8 @@
 
 <div class="container">
   <div id="Checkout" class="inline">
+    <h1>View Good Usage Rolling Door Item</h1>
+      <form id="rolling-door-view" method="GET" action="#" role="form">
       <label or="Nama">Order Number</label>
       <input class="form-control"
              value="FG-<?php echo $header['rolling_door_order_id'] ?>"
@@ -43,14 +45,10 @@
           </tbody>
       </table>
 
-      <h1>View Good Usage Rolling Door Item</h1>
-      <form id="rolling-door-view" method="GET" action="#" role="form">
+      Detail Usage:
       <section class="tabs-section">
         <div role="tabpanel" class="tab-pane" id="realization">
-            <br/>
-              
-
-              
+            <br/>              
               <table id="tableRequest" class="table table-striped">
                   <thead> 
                     <div class="row m-t-lg">

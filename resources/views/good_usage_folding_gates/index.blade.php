@@ -43,7 +43,7 @@ $(function() {
                   ?>
                   return '<a class="btn2" href="{{ route('good_usage_folding_gate_view') }}?id=' + full.id + '">VIEW</a>\
                           <a class="btn2" href="{{ route('good_usage_folding_gate_delete') }}?id=' + full.id + '">DELETE</a>\
-                          <a class="btn2" href="{{ route('print_good_usage_folding_gate') }}?id=' + full.id + '">PDF</a>'
+                          <a class="btn2" target="_blank" href="{{ route('print_good_usage_folding_gate') }}?id=' + full.id + '">PDF</a>'
                   <?php
                   }
                   else

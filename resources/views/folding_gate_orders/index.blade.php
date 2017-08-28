@@ -42,7 +42,7 @@ $(function() {
                 align: 'center',
                 mRender: function (data, type, full) {
                   <?php
-                  if(Auth::user()->super_admin)
+                  if(strtolower(Auth::user()->role->name) == 'super admin')
                   {
                   ?>
 

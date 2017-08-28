@@ -27,7 +27,7 @@
           <div class="zip-code-group form-group">
               <label for="satuan">Price</label>
               <div class="input-container">
-                  <input name="price" class="form-control" type="text" maxlength="10" required></input>
+                  <input name="price" class="form-control price" type="text" maxlength="10" required></input>
               </div>
           </div>
           <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit">
@@ -37,4 +37,15 @@
   </div>
 </div>
 
+<script>
+$(".price").keydown(function (e) {
+  if(e.keyCode >= 35 && e.keyCode <= 40)
+  {
+    return;
+  }
+  if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+    return false;
+  }
+});
+</script>
 @endsection

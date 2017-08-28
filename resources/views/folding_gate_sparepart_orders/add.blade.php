@@ -8,7 +8,7 @@
 <div class="container">
   <div id="Checkout" class="inline">
       <h1>Add Folding Gate Sparepart Order</h1>
-      <form id="folding-gate-sparepart-order-add" method="POST" action="{{ route('folding_gate_sparepart_order_add_post') }}" role="form">
+      <form id="folding-gate-sparepart-order-add" method="POST" action="{{ route('folding_gate_sparepart_order_add_post') }}" role="form" onsubmit="return checkform();">
       {{ csrf_field() }}
           <div class="form-group">
               <label or="Date">Date</label>
@@ -24,7 +24,7 @@
           </div>
           <div class="form-group">
               <label or="Phone">Phone Number</label>
-              <input name="phone" class="form-control" type="text" maxlength="255" required></input>
+              <input name="phone" class="form-control phone-number" type="text" maxlength="255" required></input>
           </div>
 
           <table id="mytable" class="table table-striped">
@@ -42,7 +42,7 @@
                     ?>
                     <tr data-id="<?php echo $i ?>">
                       <td>
-                          <select name="order[<?php echo $i ?>][folding_gate_sparepart_id]" class="form-control" onclick="checkprice(this)">
+                          <select name="order[<?php echo $i ?>][folding_gate_sparepart_id]" class="form-control ItemName" onclick="checkprice(this)" <?php echo $i==1? 'required':''?>>
                               <option value="" selected="selected"></option>
                               <?php
                                 foreach ($option as $value) {
@@ -52,16 +52,16 @@
                           </select>
                       </td>
                       <td>
-                          <input type="number" id="price-<?php echo $i ?>" class="form-control" name="order[<?php echo $i ?>][price]" min="0">
+                          <input type="number" id="price-<?php echo $i ?>" class="form-control" name="order[<?php echo $i ?>][price]" min="0" <?php echo $i==1? 'required':''?>>
                       </td>
                       <td>
                           <input type="text" id="unit-<?php echo $i ?>" class="form-control" readonly>
                       </td>
                       <td>
-                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $i ?>][qty]">
+                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $i ?>][qty]" <?php echo $i==1? 'required':''?>>
                       </td>
                       <td>
-                          <input type="text" id="fee-4" class="form-control" name="order[<?php echo $i ?>][size]">
+                          <input type="text" id="fee-4" class="form-control" name="order[<?php echo $i ?>][size]" <?php echo $i==1? 'required':''?>>
                       </td>
                   </tr>
                   <?php
@@ -80,6 +80,30 @@
 
 
 <script>
+function checkform()
+{
+  var data = document.getElementsByClassName("ItemName");
+  var array_check = new Array();
+
+  for (var i = 0, len = data.length; i < len; i++) 
+  {
+    if(data[i].value == '')
+    {
+      continue;
+    }
+    if($.inArray(data[i].value, array_check) != -1)
+    {
+      alert('Duplicate data found. Please check again before submit');
+      return false;
+    }
+    else
+    {
+      array_check.push(data[i].value);
+    }
+    
+  }
+  return true;
+}
 
 function checkprice(row)
 {
@@ -101,6 +125,12 @@ function checkprice(row)
 }
 
 $('#datetimepicker2').datetimepicker({ format: 'DD-MM-YYYY' });
+
+$(".phone-number").keydown(function (e) {
+  if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+    return false;
+  }
+});
 </script>
 
 @endsection

@@ -7,6 +7,8 @@
 
 <div class="container">
   <div id="Checkout" class="inline">
+  <h1>View Good Usage Folding Gate Item</h1>
+      <form id="folding-gate-add" method="GET" action="#" role="form">
       <label or="Nama">Order Number</label>
       <input class="form-control"
              value="FG-<?php echo $header['folding_gate_order_id'] ?>"
@@ -43,8 +45,7 @@
           </tbody>
       </table>
 
-      <h1>View Good Usage Folding Gate Item</h1>
-      <form id="folding-gate-add" method="GET" action="#" role="form">
+      Detail Usage:
       <section class="tabs-section">
         <div role="tabpanel" class="tab-pane" id="realization">
             <br/>

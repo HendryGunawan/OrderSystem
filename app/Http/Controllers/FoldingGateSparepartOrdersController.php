@@ -48,6 +48,31 @@ class FoldingGateSparepartOrdersController extends Controller
     public function postAdd(Request $request)
     {
         $response = $request->all();
+        $details = $response['order'];
+        $array_check = array();
+
+        if(!is_numeric($response['phone']))
+        {
+            flash('Phone number must be numbers only')->error();
+            return redirect()->route('folding_gate_sparepart_order');
+        }
+
+        foreach($details as $val)
+        {
+            if($val['folding_gate_sparepart_id'] == null)
+            {
+                continue;
+            }
+            if (in_array($val['folding_gate_sparepart_id'], $array_check)) {
+                flash('Duplicate data found. Please try again')->error();
+                return redirect()->route('folding_gate_sparepart_order');
+            }
+            else
+            {
+                $array_check[] = $val['folding_gate_sparepart_id'];
+            }
+        }
+        
         $FoldingGateSparepartOrder = new FoldingGateSparepartOrder();
         $FoldingGateSparepartOrder->name = $response['name'];
         $FoldingGateSparepartOrder->date = date('Y-m-d', strtotime($response['date']));
@@ -59,7 +84,6 @@ class FoldingGateSparepartOrdersController extends Controller
         if($FoldingGateSparepartOrder->save()) 
         {
             $id = $FoldingGateSparepartOrder->id;
-            $details = $response['order'];
             $grand_total=0;
             foreach($details as $detail)
             {
@@ -124,6 +148,31 @@ class FoldingGateSparepartOrdersController extends Controller
     public function postEdit(Request $request) {
         $response = $request->all();
         $id = $response['id'];
+        $details = $response['order'];
+        $array_check = array();
+
+        if(!is_numeric($response['phone']))
+        {
+            flash('Phone number must be numbers only')->error();
+            return redirect()->route('folding_gate_sparepart_order');
+        }
+
+        foreach($details as $val)
+        {
+            if($val['folding_gate_sparepart_id'] == null)
+            {
+                continue;
+            }
+            if (in_array($val['folding_gate_sparepart_id'], $array_check)) {
+                flash('Duplicate data found. Please try again')->error();
+                return redirect()->route('folding_gate_sparepart_order');
+            }
+            else
+            {
+                $array_check[] = $val['folding_gate_sparepart_id'];
+            }
+        }
+
         $FoldingGateSparepartOrder = new FoldingGateSparepartOrder();
         $save = $FoldingGateSparepartOrder::where('id', $id)
                                     ->update([
@@ -136,7 +185,6 @@ class FoldingGateSparepartOrdersController extends Controller
         if($save) 
         {
             FoldingGateSparepartOrderDetail::where('folding_gate_sparepart_order_id', $id)->delete();
-            $details = $response['order'];
             $grand_total=0;
             foreach($details as $detail)
             {

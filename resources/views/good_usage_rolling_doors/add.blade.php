@@ -8,6 +8,9 @@
 <div class="container">
   @include('flash::message')
   <div id="Checkout" class="inline">
+    <h1>Add Good Usage Rolling Door Item</h1>
+      <form id="good-usage-rolling-door-add" method="POST" action="{{ route('good_usage_rolling_door_add_post') }}" onsubmit="return checkform();" role="form">
+      {{ csrf_field() }}
       <table id="mytable" class="table table-striped">
           <thead>
               <th>Item Name</th>
@@ -41,10 +44,6 @@
       </table>
 
      @include('good_usage_rolling_doors.template')
-
-      <h1>Add Good Usage Folding Gate Item</h1>
-      <form id="good-usage-rolling-door-add" method="POST" action="{{ route('good_usage_rolling_door_add_post') }}" onsubmit="return checkform();" role="form">
-      {{ csrf_field() }}
       <input type="hidden" name='rolling_door_order_id' value={{$id}}></input>
       <section class="tabs-section">
         <div role="tabpanel" class="tab-pane" id="realization">

@@ -8,7 +8,7 @@
 <div class="container">
   <div id="Checkout" class="inline">
       <h1>Edit Rolling Door Sparepart Order</h1>
-      <form id="folding-gate-sparepart-order-edit" method="POST" action="{{ route('rolling_door_sparepart_order_edit_post') }}" role="form">
+      <form id="folding-gate-sparepart-order-edit" method="POST" action="{{ route('rolling_door_sparepart_order_edit_post') }}" role="form" onsubmit="return checkform();">
       {{ csrf_field() }}
           <div class="form-group">
               <label or="Date">Date</label>
@@ -25,7 +25,7 @@
           </div>
           <div class="form-group">
               <label or="Phone">Phone Number</label>
-              <input name="phone" class="form-control" type="text" maxlength="255" value="<?php echo $parent['phone_number'] ?>" required></input>
+              <input name="phone" class="form-control phone-number" type="text" maxlength="255" value="<?php echo $parent['phone_number'] ?>" required></input>
           </div>
 
           <table id="mytable" class="table table-striped">
@@ -43,7 +43,7 @@
                     ?>
                     <tr data-id="<?php echo $key ?>">
                       <td>
-                          <select name="order[<?php echo $key ?>][rolling_door_sparepart_id]" class="form-control" onclick="checkprice(this)">
+                          <select name="order[<?php echo $key ?>][rolling_door_sparepart_id]" class="form-control ItemName" onclick="checkprice(this)" <?php echo $key==0? 'required':''?>>
                               <option value=""></option>
                               <?php
                                 foreach ($option as $value) 
@@ -62,16 +62,16 @@
                           </select>
                       </td>
                       <td>
-                          <input type="number" id="price-<?php echo $key ?>" class="form-control" name="order[<?php echo $key ?>][price]" min="<?php echo $child_value['MinPrice'] ?>" value="<?php echo $child_value['price'] ?>" >
+                          <input type="number" id="price-<?php echo $key ?>" class="form-control" name="order[<?php echo $key ?>][price]" min="<?php echo $child_value['MinPrice'] ?>" value="<?php echo $child_value['price'] ?>" <?php echo $key==0? 'required':''?>>
                       </td>
                       <td>
                           <input type="text" id="unit-<?php echo $key ?>" class="form-control" value="<?php echo $child_value['UnitName'] ?>" readonly>
                       </td>
                       <td>
-                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $key ?>][qty]" value="<?php echo $child_value['qty'] ?>" >
+                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $key ?>][qty]" value="<?php echo $child_value['qty'] ?>" <?php echo $key==0? 'required':''?>>
                       </td>
                       <td>
-                          <input type="text" id="fee-4" class="form-control" name="order[<?php echo $key ?>][size]" value="<?php echo $child_value['size'] ?>" >
+                          <input type="text" id="fee-4" class="form-control" name="order[<?php echo $key ?>][size]" value="<?php echo $child_value['size'] ?>" <?php echo $key==0? 'required':''?>>
                       </td>
                   </tr>
                   <?php
@@ -83,7 +83,7 @@
                     ?>
                     <tr data-id="<?php echo $i ?>">
                       <td>
-                          <select name="order[<?php echo $i ?>][rolling_door_sparepart_id]" class="form-control" onclick="checkprice(this)">
+                          <select name="order[<?php echo $i ?>][rolling_door_sparepart_id]" class="form-control ItemName" onclick="checkprice(this)">
                               <option value="" selected="selected"></option>
                               <?php
                                 foreach ($option as $value) {
@@ -120,6 +120,30 @@
 </div>
 
 <script>
+function checkform()
+{
+  var data = document.getElementsByClassName("ItemName");
+  var array_check = new Array();
+
+  for (var i = 0, len = data.length; i < len; i++) 
+  {
+    if(data[i].value == '')
+    {
+      continue;
+    }
+    if($.inArray(data[i].value, array_check) != -1)
+    {
+      alert('Duplicate data found. Please check again before submit');
+      return false;
+    }
+    else
+    {
+      array_check.push(data[i].value);
+    }
+    
+  }
+  return true;
+}
 
 function checkprice(row)
 {
@@ -141,6 +165,12 @@ function checkprice(row)
 }
 
 $('#datetimepicker2').datetimepicker({ format: 'DD-MM-YYYY' });
+
+$(".phone-number").keydown(function (e) {
+  if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+    return false;
+  }
+});
 </script>
 
 @endsection

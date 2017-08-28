@@ -48,6 +48,31 @@ class RollingDoorSparepartOrdersController extends Controller
     public function postAdd(Request $request)
     {
         $response = $request->all();
+        $details = $response['order'];
+        $array_check = array();
+
+        if(!is_numeric($response['phone']))
+        {
+            flash('Phone number must be numbers only')->error();
+            return redirect()->route('rolling_door_sparepart_order');
+        }
+
+        foreach($details as $val)
+        {
+            if($val['rolling_door_sparepart_id'] == null)
+            {
+                continue;
+            }
+            if (in_array($val['rolling_door_sparepart_id'], $array_check)) {
+                flash('Duplicate data found. Please try again')->error();
+                return redirect()->route('rolling_door_sparepart_order');
+            }
+            else
+            {
+                $array_check[] = $val['rolling_door_sparepart_id'];
+            }
+        }
+
         $RollingDoorSparepartOrder = new RollingDoorSparepartOrder();
         $RollingDoorSparepartOrder->name = $response['name'];
         $RollingDoorSparepartOrder->date = date('Y-m-d', strtotime($response['date']));
@@ -59,7 +84,6 @@ class RollingDoorSparepartOrdersController extends Controller
         if($RollingDoorSparepartOrder->save()) 
         {
             $id = $RollingDoorSparepartOrder->id;
-            $details = $response['order'];
             $grand_total=0;
             foreach($details as $detail)
             {
@@ -123,7 +147,31 @@ class RollingDoorSparepartOrdersController extends Controller
 
     public function postEdit(Request $request) {
         $response = $request->all();
+        $details = $response['order'];
         $id = $response['id'];
+        $array_check = array();
+        
+        if(!is_numeric($response['phone']))
+        {
+            flash('Phone number must be numbers only')->error();
+            return redirect()->route('rolling_door_sparepart_order');
+        }
+
+        foreach($details as $val)
+        {
+            if($val['rolling_door_sparepart_id'] == null)
+            {
+                continue;
+            }
+            if (in_array($val['rolling_door_sparepart_id'], $array_check)) {
+                flash('Duplicate data found. Please try again')->error();
+                return redirect()->route('rolling_door_sparepart_order');
+            }
+            else
+            {
+                $array_check[] = $val['rolling_door_sparepart_id'];
+            }
+        }
         $RollingDoorSparepartOrder = new RollingDoorSparepartOrder();
         $save = $RollingDoorSparepartOrder::where('id', $id)
                                     ->update([
@@ -136,7 +184,6 @@ class RollingDoorSparepartOrdersController extends Controller
         if($save) 
         {
             RollingDoorSparepartOrderDetail::where('rolling_door_sparepart_order_id', $id)->delete();
-            $details = $response['order'];
             $grand_total=0;
             foreach($details as $detail)
             {

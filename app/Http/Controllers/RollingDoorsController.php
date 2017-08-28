@@ -43,6 +43,20 @@ class RollingDoorsController extends Controller
     public function postAdd(Request $request)
     {
         $response = $request->all();
+
+        if(!is_numeric($response['price']))
+        {
+            flash('Price must be numbers only')->error();
+            return redirect()->route('rolling_door');
+        }
+
+        $check_data = RollingDoor::where('name', trim($response['name']))->first();
+
+        if($check_data) {
+            flash('Data already in the list. Please insert another item')->error();
+            return redirect()->route('rolling_door');
+        }
+
         $RollingDoor = new RollingDoor();
         $RollingDoor->name = $response['name'];
         $RollingDoor->unit_id = $response['unit_id'];
@@ -86,9 +100,22 @@ class RollingDoorsController extends Controller
     public function postEdit(Request $request) {
         $respons = $request->all();
         $id = $respons['id'];
-        $name = $respons['name'];
+        $name = trim($respons['name']);
         $unit_id = $respons['unit_id'];
         $price = $respons['price'];
+
+        if(!is_numeric($price))
+        {
+            flash('Price must be numbers only')->error();
+            return redirect()->route('rolling_door');
+        }
+
+        $check_data = RollingDoor::where('name', $name)->where('id', '!=', $id)->first();
+
+        if($check_data) {
+            flash('Data already in the list. Please insert another item')->error();
+            return redirect()->route('rolling_door');
+        }
 
         $RollingDoor = new RollingDoor();
         $save = $RollingDoor::where('id', $id)

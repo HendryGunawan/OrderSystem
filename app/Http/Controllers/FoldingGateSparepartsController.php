@@ -43,8 +43,21 @@ class FoldingGateSparepartsController extends Controller
     public function postAdd(Request $request)
     {
         $response = $request->all();
+        if(!is_numeric($response['price']))
+        {
+            flash('Price must be numbers only')->error();
+            return redirect()->route('folding_gate_sparepart');
+        }
+
+        $check_data = FoldingGateSparepart::where('name', trim($response['name']))->first();
+
+        if($check_data) {
+            flash('Data already in the list. Please insert another item')->error();
+            return redirect()->route('folding_gate_sparepart');
+        }
+
         $FoldingGateSparepart = new FoldingGateSparepart();
-        $FoldingGateSparepart->name = $response['name'];
+        $FoldingGateSparepart->name = trim($response['name']);
         $FoldingGateSparepart->unit_id = $response['unit_id'];
         $FoldingGateSparepart->price = $response['price'];
         $FoldingGateSparepart->delete_flag = 0;
@@ -86,9 +99,22 @@ class FoldingGateSparepartsController extends Controller
     public function postEdit(Request $request) {
         $respons = $request->all();
         $id = $respons['id'];
-        $name = $respons['name'];
+        $name = trim($respons['name']);
         $unit_id = $respons['unit_id'];
         $price = $respons['price'];
+
+        if(!is_numeric($price))
+        {
+            flash('Price must be numbers only')->error();
+            return redirect()->route('folding_gate_sparepart');
+        }
+
+        $check_data = FoldingGateSparepart::where('name', $name)->where('id', '!=', $id)->first();
+
+        if($check_data) {
+            flash('Data already in the list. Please insert another item')->error();
+            return redirect()->route('folding_gate_sparepart');
+        }
 
         $FoldingGateSparepart = new FoldingGateSparepart();
         $save = $FoldingGateSparepart::where('id', $id)
