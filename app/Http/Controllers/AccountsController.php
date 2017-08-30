@@ -47,12 +47,12 @@ class AccountsController extends Controller
 
         if(!empty($check_account))
         {
-            flash('Username already used')->error();
+            flash('Username telah digunakan')->error();
             return redirect()->route('account');
         }
         if($response['password'] != $response['password_confirm'])
         {
-            flash('Password Not Match')->error();
+            flash('Password Tidak Sama')->error();
             return redirect()->route('account');
         }
 
@@ -63,10 +63,10 @@ class AccountsController extends Controller
         $User->role_id = $response['role_id'];
         
         if($User->save()) {
-            flash('Account succefully saved')->success();
+            flash('Akun berhasil disimpan')->success();
             return redirect()->route('account');
         } else {
-            flash('Account failed to save')->error();
+            flash('Akun gagal disimpan')->error();
             return redirect()->route('account');
         }
     }
@@ -76,14 +76,14 @@ class AccountsController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('account');
         }
 
         $content = User::getData($response['id']);
         if(empty($content))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('account');
         }
         $option = Role::getData();
@@ -107,7 +107,7 @@ class AccountsController extends Controller
 
         if($password != $password_confirm)
         {
-            flash('Password Not Match')->error();
+            flash('Password Tidak Sama')->error();
             return redirect()->route('account');
         }
 
@@ -121,10 +121,10 @@ class AccountsController extends Controller
                                     ]);
 
         if($save) {
-            flash('Data succefully updated')->success();
+            flash('Data berhasil di update')->success();
             return redirect()->route('account');
         } else {
-            flash('Data failed to updated')->error();
+            flash('Data gagal di update')->error();
             return redirect()->route('account');
         }
     }
@@ -134,14 +134,14 @@ class AccountsController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('account');
         }
 
         $content = User::getData($response['id']);
         if(empty($content))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('account');
         }
 
@@ -160,10 +160,10 @@ class AccountsController extends Controller
         $delete = User::where('id', $id)->delete();
 
         if($delete) {
-            flash('Data succefully deleted')->success();
+            flash('Data berhasil dihapus')->success();
             return redirect()->route('account');
         } else {
-            flash('Data failed to deleted')->error();
+            flash('Data gagal dihapus')->error();
             return redirect()->route('account');
         }
     }

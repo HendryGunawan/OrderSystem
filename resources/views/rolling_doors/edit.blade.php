@@ -2,7 +2,7 @@
 
 @section('content')
 <a href="{{ route('rolling_door') }}">
-   <input type="button" class="btn1" value="Back" />
+   <input type="button" class="btn1" value="Kembali" />
 </a>
 
 <div class="container">
@@ -12,11 +12,11 @@
           {{ csrf_field() }}
           <input name="id" type="hidden" value="{{$content['id']}}"></input>
           <div class="form-group">
-              <label or="Nama">Item Name</label>
+              <label or="Nama">Nama Barang</label>
               <input name="name" class="form-control" type="text" maxlength="255" value="{{$content['name']}}" required></input>
           </div>
           <div class="form-group">
-              <label for="satuan">Unit</label>
+              <label for="satuan">Satuan</label>
               <select name="unit_id" class="form-control">
                 <?php
                 foreach ($option as $value) {
@@ -34,13 +34,13 @@
               </select>
           </div>
           <div class="zip-code-group form-group">
-              <label for="satuan">Price</label>
+              <label for="satuan">Harga</label>
               <div class="input-container">
                   <input name="price" class="form-control price" type="text" maxlength="10" value="{{$content['price']}}" required></input>
               </div>
           </div>
           <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit">
-              <span class="align-middle">Submit</span>
+              <span class="align-middle">Simpan</span>
           </button>
       </form>
   </div>

@@ -53,7 +53,7 @@ class FoldingGateOrdersController extends Controller
 
         if(!is_numeric($response['phone']))
         {
-            flash('Phone number must be numbers only')->error();
+            flash('Nomor telepon harus angka')->error();
             return redirect()->route('folding_gate_order');
         }
 
@@ -64,7 +64,7 @@ class FoldingGateOrdersController extends Controller
                 continue;
             }
             if (in_array($val['folding_gate_id'], $array_check)) {
-                flash('Duplicate data found. Please try again')->error();
+                flash('Data ganda ditemukan. Silahkan coba lagi')->error();
                 return redirect()->route('folding_gate_order');
             }
             else
@@ -109,10 +109,10 @@ class FoldingGateOrdersController extends Controller
                                     ->update([
                                         'grand_total' => $grand_total
                                     ]);
-            flash('Data succefully saved')->success();
+            flash('Data berhasil disimpan')->success();
             return redirect()->route('folding_gate_order');
         } else {
-            flash('Data failed to save')->error();
+            flash('Data gagal disimpan')->error();
             return redirect()->route('folding_gate_order');
         }
     }
@@ -122,7 +122,7 @@ class FoldingGateOrdersController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('folding_gate_order');
         }
 
@@ -131,7 +131,7 @@ class FoldingGateOrdersController extends Controller
         $option = FoldingGate::getDataAll();
         if(empty($parent))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('folding_gate_order');
         }
 
@@ -153,7 +153,7 @@ class FoldingGateOrdersController extends Controller
 
         if(!is_numeric($response['phone']))
         {
-            flash('Phone number must be numbers only')->error();
+            flash('Nomor telepon harus angka')->error();
             return redirect()->route('folding_gate_order');
         }
         foreach($details as $val)
@@ -163,7 +163,7 @@ class FoldingGateOrdersController extends Controller
                 continue;
             }
             if (in_array($val['folding_gate_id'], $array_check)) {
-                flash('Duplicate data found. Please try again')->error();
+                flash('Data ganda ditemukan. Silahkan coba lagi')->error();
                 return redirect()->route('folding_gate_order');
             }
             else
@@ -209,10 +209,10 @@ class FoldingGateOrdersController extends Controller
                                     ->update([
                                         'grand_total' => $grand_total
                                     ]);
-            flash('Data succefully updated')->success();
+            flash('Data berhasil diupdate')->success();
             return redirect()->route('folding_gate_order');
         } else {
-            flash('Data failed to update')->error();
+            flash('Data gagal diupdate')->error();
             return redirect()->route('folding_gate_order');
         }
     }
@@ -222,7 +222,7 @@ class FoldingGateOrdersController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('folding_gate_order');
         }
 
@@ -231,7 +231,7 @@ class FoldingGateOrdersController extends Controller
         $option = FoldingGate::getDataAll();
         if(empty($parent))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('folding_gate_order');
         }
 
@@ -255,10 +255,10 @@ class FoldingGateOrdersController extends Controller
                                     ]);
 
         if($save) {
-            flash('Data succefully deleted')->success();
+            flash('Data berhasil dihapus')->success();
             return redirect()->route('folding_gate_order');
         } else {
-            flash('Data failed to deleted')->error();
+            flash('Data gagal dihapus')->error();
             return redirect()->route('folding_gate_order');
         }
     }
@@ -268,7 +268,7 @@ class FoldingGateOrdersController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('folding_gate_order');
         }
 
@@ -277,7 +277,7 @@ class FoldingGateOrdersController extends Controller
         $option = FoldingGate::getDataAll();
         if(empty($parent))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('folding_gate_order');
         }
 

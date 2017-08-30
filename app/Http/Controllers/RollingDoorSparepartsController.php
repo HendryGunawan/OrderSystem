@@ -46,14 +46,14 @@ class RollingDoorSparepartsController extends Controller
 
         if(!is_numeric($response['price']))
         {
-            flash('Price must be numbers only')->error();
+            flash('Harga harus angka')->error();
             return redirect()->route('rolling_door_sparepart');
         }
 
         $check_data = RollingDoorSparepart::where('name', trim($response['name']))->first();
 
         if($check_data) {
-            flash('Data already in the list. Please insert another item')->error();
+            flash('Data sudah ada dalam daftar. Silahkan masukkan data lainnya')->error();
             return redirect()->route('rolling_door_sparepart');
         }
 
@@ -64,10 +64,10 @@ class RollingDoorSparepartsController extends Controller
         $RollingDoorSparepart->delete_flag = 0;
         
         if($RollingDoorSparepart->save()) {
-            flash('Data succefully saved')->success();
+            flash('Data berhasil disimpan')->success();
             return redirect()->route('rolling_door_sparepart');
         } else {
-            flash('Data failed to save')->error();
+        flash('Data gagal disimpan')->error();
             return redirect()->route('rolling_door_sparepart');
         }
     }
@@ -77,14 +77,14 @@ class RollingDoorSparepartsController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_sparepart');
         }
 
         $content = RollingDoorSparepart::getData($response['id']);
         if(empty($content))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_sparepart');
         }
 
@@ -106,14 +106,14 @@ class RollingDoorSparepartsController extends Controller
 
         if(!is_numeric($price))
         {
-            flash('Price must be numbers only')->error();
+            flash('Harga harus angka')->error();
             return redirect()->route('rolling_door_sparepart');
         }
 
         $check_data = RollingDoorSparepart::where('name', $name)->where('id', '!=', $id)->first();
 
         if($check_data) {
-            flash('Data already in the list. Please insert another item')->error();
+            flash('Data sudah ada dalam daftar. Silahkan masukkan data lainnya')->error();
             return redirect()->route('rolling_door_sparepart');
         }
 
@@ -126,10 +126,10 @@ class RollingDoorSparepartsController extends Controller
                                     ]);
 
         if($save) {
-            flash('Data succefully updated')->success();
+            flash('Data berhasil diupdate')->success();
             return redirect()->route('rolling_door_sparepart');
         } else {
-            flash('Data failed to updated')->error();
+            flash('Data gagal diupdate')->error();
             return redirect()->route('rolling_door_sparepart');
         }
     }
@@ -139,14 +139,14 @@ class RollingDoorSparepartsController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_sparepart');
         }
 
         $data = RollingDoorSparepart::getData($response['id']);
         if(empty($data))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_sparepart');
         }
 
@@ -164,10 +164,10 @@ class RollingDoorSparepartsController extends Controller
                                     ]);
 
         if($save) {
-            flash('Data succefully deleted')->success();
+            flash('Data berhasil dihapus')->success();
             return redirect()->route('rolling_door_sparepart');
         } else {
-            flash('Data failed to deleted')->error();
+            flash('Data gagal dihapus')->error();
             return redirect()->route('rolling_door_sparepart');
         }
     }

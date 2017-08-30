@@ -7,7 +7,7 @@
 
 <div class="container">
   <div id="Checkout" class="inline">
-      <h1>Delete Folding Gate Sparepart Item</h1>
+      <h1>Hapus Folding Gate Sparepart Item</h1>
       <form id="folding-gate-delete" method="POST" action="{{ route('folding_gate_sparepart_delete_post') }}" role="form">
           {{ csrf_field() }}
           <input name="id" type="hidden" value="{{$id}}"></input>
@@ -26,7 +26,7 @@
               </div>
           </div>
           <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit">
-              <span class="align-middle">DELETE</span>
+              <span class="align-middle">HAPUS</span>
           </button>
       </form>
   </div>

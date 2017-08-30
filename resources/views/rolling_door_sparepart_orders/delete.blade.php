@@ -7,34 +7,34 @@
 
 <div class="container">
   <div id="Checkout" class="inline">
-      <h1>Delete Rolling Door Sparepart Order</h1>
+      <h1>Hapus Pesanan Rolling Door Sparepart</h1>
       <form id="rolling-door-sparepart-order-delete" method="POST" action="{{ route('rolling_door_sparepart_order_delete_post') }}" role="form">
       {{ csrf_field() }}
           <div class="form-group">
-              <label or="Date">Date</label>
+              <label or="Date">Tanggal</label>
               <input type="hidden" value="<?php echo $parent['id'] ?>" name="id"></input>
               <input name="date" type="text" class="form-control" id="datetimepicker2" maxlength="10" value="<?php echo date('d-m-Y', strtotime($parent['date'])) ?>" readonly required></input>
           </div>
           <div class="form-group">
-              <label or="Nama">Name</label>
+              <label or="Nama">Nama</label>
               <input name="name" class="form-control" type="text" maxlength="255" value="<?php echo $parent['name'] ?>" readonly required></input>
           </div>
           <div class="form-group">
-              <label or="Address">Address</label>
+              <label or="Address">Alamat</label>
               <input name="address" class="form-control" type="text" maxlength="255" value="<?php echo $parent['address'] ?>" readonly required></input>
           </div>
           <div class="form-group">
-              <label or="Phone">Phone Number</label>
+              <label or="Phone">Nomor Telepon</label>
               <input name="phone" class="form-control" type="text" maxlength="255" value="<?php echo $parent['phone_number'] ?>" readonly required></input>
           </div>
 
           <table id="mytable" class="table table-striped">
               <thead>
-                  <th>Item Name</th>
-                  <th>Price/Unit</th>
-                  <th>Unit</th>
                   <th>Qty</th>
+                  <th>Nama Barang</th>
+                  <th>Harga/Satuan</th>
                   <th>Size</th>
+                  <th>Satuan</th>
               </thead>
               <tbody>
                   <?php
@@ -43,19 +43,19 @@
                     ?>
                     <tr data-id="<?php echo $key ?>">
                       <td>
+                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $key ?>][qty]" value="<?php echo $child_value['qty'] ?>" readonly>
+                      </td>
+                      <td>
                           <input type="text" class="form-control" name="order[<?php echo $key ?>][RollingDoorSparepartName]" value="<?php echo $child_value['ItemName'] ?>" readonly>
                       </td>
                       <td>
                           <input type="text" id="price-<?php echo $key ?>" class="form-control" name="order[<?php echo $key ?>][price]" min="0" value="<?php echo number_format($child_value['price']) ?>" readonly>
                       </td>
                       <td>
-                          <input type="text" id="unit-<?php echo $key ?>" class="form-control" value="<?php echo $child_value['UnitName'] ?>" readonly>
-                      </td>
-                      <td>
-                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $key ?>][qty]" value="<?php echo $child_value['qty'] ?>" readonly>
-                      </td>
-                      <td>
                           <input type="text" id="fee-4" class="form-control" name="order[<?php echo $key ?>][size]" value="<?php echo $child_value['size'] ?>" readonly>
+                      </td>
+                      <td>
+                          <input type="text" id="unit-<?php echo $key ?>" class="form-control" value="<?php echo $child_value['UnitName'] ?>" readonly>
                       </td>
                   </tr>
                   <?php
@@ -66,7 +66,7 @@
         
           
           <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit">
-              <span class="align-middle">DELETE</span>
+              <span class="align-middle">HAPUS</span>
           </button>
       </form>
   </div>

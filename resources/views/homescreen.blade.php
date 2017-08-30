@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
 @include('flash::message')
-Welcome <?php echo Auth::user()->name  ?><br>
-Please Select Menu on the left using Menu Button
+Selamat Datang <?php echo Auth::user()->name  ?>.<br>
+Silahkan pilih menu yang terdapat pada bagian kiri.
 </div>
 
       

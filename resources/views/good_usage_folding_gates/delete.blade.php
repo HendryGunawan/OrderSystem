@@ -2,20 +2,20 @@
 
 @section('content')
 <a href="{{ route('good_usage_folding_gate') }}">
-   <input type="button" class="btn1" value="Back" />
+   <input type="button" class="btn1" value="Kembali" />
 </a>
 
 <div class="container">
   <div id="Checkout" class="inline">
 
-      <h1>Delete Good Usage Folding Gate Item</h1>
+      <h1>Hapus Penggunaan Barang Folding Gate</h1>
       <form id="folding-gate-add" method="POST" action="{{ route('good_usage_folding_gate_delete_post') }}" role="form">
       {{ csrf_field() }}
       <input type="hidden" name='id' value="{{$header['id']}}"></input>
       <section class="tabs-section">
         <div role="tabpanel" class="tab-pane" id="realization">
             <br/>
-              <label or="Nama">Order Number</label>
+              <label or="Nama">Nomor Pesanan</label>
               <input class="form-control"
                      value="FG-<?php echo $header['folding_gate_order_id'] ?>"
                      type="text" readonly>
@@ -24,8 +24,8 @@
               <table id="tableRequest" class="table table-striped">
                   <thead> 
                     <div class="row m-t-lg">
-                      <div class="col-md-5"><label class="form-label">Item Code</label></div>
-                      <div class="col-md-5"><label class="form-label">Length (meters)</label></div>
+                      <div class="col-md-5"><label class="form-label">Kode Barang</label></div>
+                      <div class="col-md-5"><label class="form-label">Panjang (meters)</label></div>
                     </div>
                   </thead>
                   <tbody>
@@ -64,7 +64,7 @@
       </section>
 
           <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit">
-              <span class="align-middle">Delete</span>
+              <span class="align-middle">Hapus</span>
           </button>
       </form>
   </div>

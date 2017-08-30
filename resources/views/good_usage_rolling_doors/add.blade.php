@@ -2,21 +2,21 @@
 
 @section('content')
 <a href="{{ route('good_usage_rolling_door') }}">
-   <input type="button" class="btn1" value="Back" />
+   <input type="button" class="btn1" value="Kembali" />
 </a>
 
 <div class="container">
   @include('flash::message')
   <div id="Checkout" class="inline">
-    <h1>Add Good Usage Rolling Door Item</h1>
+    <h1>Tambah Penggunaan Barang Rolling Door</h1>
       <form id="good-usage-rolling-door-add" method="POST" action="{{ route('good_usage_rolling_door_add_post') }}" onsubmit="return checkform();" role="form">
       {{ csrf_field() }}
       <table id="mytable" class="table table-striped">
           <thead>
-              <th>Item Name</th>
-              <th>Unit</th>
               <th>Qty</th>
+              <th>Nama Barang</th>
               <th>Size</th>
+              <th>Satuan</th>
           </thead>
           <tbody>
               <?php
@@ -25,16 +25,16 @@
                 ?>
                 <tr>
                   <td>
-                      <input type="text" class="form-control" value="<?php echo $child_value['ItemName'] ?>" readonly>
-                  </td>
-                  <td>
-                      <input type="text" class="form-control" value="<?php echo $child_value['UnitName'] ?>" readonly>
-                  </td>
-                  <td>
                       <input type="text" class="form-control" value="<?php echo $child_value['qty'] ?>" readonly>
                   </td>
                   <td>
+                      <input type="text" class="form-control" value="<?php echo $child_value['ItemName'] ?>" readonly>
+                  </td>
+                  <td>
                       <input type="text" class="form-control" value="<?php echo $child_value['size'] ?>" readonly>
+                  </td>
+                  <td>
+                      <input type="text" class="form-control" value="<?php echo $child_value['UnitName'] ?>" readonly>
                   </td>
               </tr>
               <?php
@@ -48,7 +48,7 @@
       <section class="tabs-section">
         <div role="tabpanel" class="tab-pane" id="realization">
             <a href="#" class="btn btn-inline btn-primary btn-sm btn-add" data-tmpl="#form-add-request-tmpl" data-style="expand-left">
-              <i class="mdi mdi-plus-circle mdi-20px"></i>&nbsp;Add Item
+              <i class="mdi mdi-plus-circle mdi-20px"></i>&nbsp;Tambah Barang
             </a>
 
             <br/>
@@ -56,15 +56,50 @@
               <table id="tableRequest" class="table table-striped">
                   <thead> 
                     <div class="row m-t-lg">
-                      <div class="col-md-3"><label class="form-label">Item Code</label></div>
-                      <div class="col-md-3"><label class="form-label">Quota</label></div>
-                      <div class="col-md-3"><label class="form-label">Length (meters)</label></div>
+                      <div class="col-md-3"><label class="form-label">Kode Barang</label></div>
+                      <div class="col-md-3"><label class="form-label">Kuota</label></div>
+                      <div class="col-md-3"><label class="form-label">Panjang (meter)</label></div>
                       <div class="col-md-3 action"><label class="form-label">Action</label></div>
                     </div>
                   </thead>
                   <tbody>
                       <div class="detail">
-                      
+                        <div class="row m-t-lg rows form_tmpl" data-id="0" id="tmpl-0">
+
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <div class="form-control-wrapper">
+                              <select name="detail[0][item_code]" class="form-control item_code" id="order-0" required">
+                                  <option value=''></option>
+                                  <?php
+                                    foreach ($option as $value) {
+                                        echo '<option value="'.$value['item_code'].'">'.$value['item_code'].'</option>';
+                                    }
+                                  ?>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <div class="form-control-wrapper">
+                              <input class="form-control amount_real-0"
+                                     id="quota-0"
+                                     type="text" readonly>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <div class="form-control-wrapper">
+                              <input class="form-control amount_real-0"
+                                     name="detail[0][length]"
+                                     id="length-0"
+                                     type="number" min=0 max=5 step="0.001" required>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                       </div>
                   </tbody>
                   
@@ -73,7 +108,7 @@
       </section>
 
           <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit">
-              <span class="align-middle">Submit</span>
+              <span class="align-middle">Simpan</span>
           </button>
       </form>
   </div>
@@ -92,7 +127,7 @@ function checkform()
   {
     if($.inArray(data[i].value, array_check) != -1)
     {
-      alert('Duplicate data found. Please check again before submit');
+      alert('Data ganda ditemukan. Periksa kembali sebelum disimpan');
       return false;
     }
     else
@@ -168,5 +203,19 @@ var fn = {
     },
 }
 
+$('#order-0').on('change', function(event){
+    event.preventDefault();
+    $.ajax({
+        url: '{{ route("good_usage_get_quota_rolling_door") }}?id='+$(this).val(),
+        method: 'GET',
+        // dataType: 'JSON',
+        // context: document.body,
+        success: function(data){
+            $("#quota-0").val(data);
+            $("#length-0").val(0);
+            $("#length-0").attr("max", data);
+        }
+    });
+});
 </script>
 @endsection

@@ -2,24 +2,24 @@
 
 @section('content')
 <a href="{{ route('good_receipt_rolling_door_add') }}">
-   <input type="button" class="btn1" value="+ New" />
+   <input type="button" class="btn1" value="+ Baru" />
 </a>
 
 <div class="container">
    @include('flash::message')
   <div id="Checkout" class="inline">
 
-      <h1>Good Receipt Rolling Door Items</h1>
+      <h1>Penerimaan Barang Rolling Door</h1>
       <table class="table table-bordered" id="good-receipt-rolling-door-table">
         <thead>
             <tr>
-                <th>Item Code</th>
-                <th>Item Name</th>
-                <th>Thick (mm)</th>
-                <th>Width (mm)</th>
-                <th>Weight (Kg)</th>
-                <th>Length (m)</th>
-                <th>Date Created</th>
+                <th>Kode Barang</th>
+                <th>Nama Barang</th>
+                <th>Tebal (mm)</th>
+                <th>Lebar (mm)</th>
+                <th>Berat (Kg)</th>
+                <th>Panjang (m)</th>
+                <th>Tanggal Dibuat</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -52,7 +52,7 @@ $(function() {
                   {
                   ?>
                   return '<a class="btn2" href="{{ route('good_receipt_rolling_door_edit') }}?id=' + full.id + '">EDIT</a>\
-                          <a class="btn2" href="{{ route('good_receipt_rolling_door_delete') }}?id=' + full.id + '">DELETE</a>'
+                          <a class="btn2" href="{{ route('good_receipt_rolling_door_delete') }}?id=' + full.id + '">HAPUS</a>'
                   <?php
                   }
                   else

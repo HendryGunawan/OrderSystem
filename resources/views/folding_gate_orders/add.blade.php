@@ -2,38 +2,38 @@
 
 @section('content')
 <a href="{{ route('folding_gate_order') }}">
-   <input type="button" class="btn1" value="Back" />
+   <input type="button" class="btn1" value="Kembali" />
 </a>
 
 <div class="container">
   <div id="Checkout" class="inline">
-      <h1>Add Folding Gate Order</h1>
+      <h1>Tambah Pesanan Folding Gate</h1>
       <form id="folding-gate-order-add" method="POST" action="{{ route('folding_gate_order_add_post') }}" role="form" onsubmit="return checkform();">
       {{ csrf_field() }}
           <div class="form-group">
-              <label or="Date">Date</label>
+              <label or="Date">Tanggal</label>
               <input name="date" type="text" class="form-control" id="datetimepicker2" maxlength="10" required></input>
           </div>
           <div class="form-group">
-              <label or="Nama">Name</label>
+              <label or="Nama">Nama</label>
               <input name="name" class="form-control" type="text" maxlength="255" required></input>
           </div>
           <div class="form-group">
-              <label or="Address">Address</label>
+              <label or="Address">Alamat</label>
               <input name="address" class="form-control" type="text" maxlength="255" required></input>
           </div>
           <div class="form-group">
-              <label or="Phone">Phone Number</label>
+              <label or="Phone">Nomor Telepon</label>
               <input name="phone" class="form-control phone-number" type="text" maxlength="255" required></input>
           </div>
 
           <table id="mytable" class="table table-striped">
               <thead>
                   <th>Qty</th>
-                  <th>Item Name</th>
-                  <th>Price/Unit</th>
+                  <th>Nama Barang</th>
+                  <th>Harga/Satuan</th>
                   <th>Size</th>
-                  <th>Unit</th>
+                  <th>Satuan</th>
               </thead>
               <tbody>
                   <?php
@@ -74,7 +74,7 @@
         
           
           <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit">
-              <span class="align-middle">Submit</span>
+              <span class="align-middle">Simpan</span>
           </button>
       </form>
   </div>
@@ -95,7 +95,7 @@ function checkform()
     }
     if($.inArray(data[i].value, array_check) != -1)
     {
-      alert('Duplicate data found. Please check again before submit');
+      alert('Data ganda ditemukan. Periksa kembali sebelum disimpan');
       return false;
     }
     else

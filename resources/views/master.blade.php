@@ -44,7 +44,7 @@
                     {
                         ?>
                     <li class="pushy-submenu">
-                        <button>Price Update</button>
+                        <button>Daftar Harga</button>
                         <ul>
                             <li class="pushy-link"><a href="{{ route('folding_gate') }}">Folding Gate</a></li>
                             <li class="pushy-link"><a href="{{ route('folding_gate_sparepart') }}">Folding Gate Spare Part</a></li>
@@ -58,7 +58,7 @@
                     {
                     ?>
                     <li class="pushy-submenu">
-                        <button id="first-link">Order List</button>
+                        <button id="first-link">Daftar Pesanan</button>
                         <ul>
                             <li class="pushy-link"><a href="{{ route('folding_gate_order') }}">Folding Gate</a></li>
                             <li class="pushy-link"><a href="{{ route('folding_gate_sparepart_order') }}">Folding Gate Spare Part</a></li>
@@ -72,7 +72,7 @@
                             {
                     ?>
                     <li class="pushy-submenu">
-                        <button id="first-link">Good Receipt</button>
+                        <button id="first-link">Penerimaan Barang</button>
                         <ul>
                             <?php
                             if(strtolower(Auth::user()->role->name) == 'super admin' || strtolower(Auth::user()->role->name) == 'admin gudang folding gate')
@@ -96,7 +96,7 @@
                             {
                     ?>
                     <li class="pushy-submenu">
-                        <button id="first-link">Good Usage</button>
+                        <button id="first-link">Pengeluaran Barang</button>
                         <ul>
                             <?php
                             if(strtolower(Auth::user()->role->name) == 'super admin' || strtolower(Auth::user()->role->name) == 'admin gudang folding gate')
@@ -127,22 +127,22 @@
                         </ul>
                     </li> -->
                     <li class="pushy-submenu">
-                        <button id="second-link">Account</button>
+                        <button id="second-link">Akun</button>
                         <ul>
                             <?php
                             if(strtolower(Auth::user()->role->name) == 'super admin')
                             {
                             ?>
-                            <li class="pushy-link"><a href="{{ route('account') }}">Manage Accounts</a></li>
+                            <li class="pushy-link"><a href="{{ route('account') }}">Kelola Akun</a></li>
                             <?php
                             }
                             ?>
-                            <li class="pushy-link"><a href="{{ route('change_password') }}">Change Password</a></li>
+                            <li class="pushy-link"><a href="{{ route('change_password') }}">Ganti Password</a></li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                    Logout
+                                    Keluar
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

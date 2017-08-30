@@ -2,20 +2,20 @@
 
 @section('content')
 <a href="{{ route('folding_gate_sparepart_order_add') }}">
-   <input type="button" class="btn1" value="+ New Order" />
+   <input type="button" class="btn1" value="+ Pesanan" />
 </a>
 
 <div class="container">
    @include('flash::message')
   <div id="Checkout" class="inline">
 
-      <h1>Folding Gate Sparepart Orders</h1>
+      <h1>Pesanan Folding Gate Sparepart</h1>
       <table class="table table-bordered" id="folding-gate-sparepart-order-table">
         <thead>
             <tr>
-                <th>Order Number</th>
-                <th>Name</th>
-                <th>Date</th>
+                <th>Nomor Order</th>
+                <th>Nama</th>
+                <th>Tanggal</th>
                 <th>Grand Total</th>
                 <th>Action</th>
             </tr>
@@ -46,9 +46,9 @@ $(function() {
                   {
                   ?>
 
-                  return '<a class="btn2" href="{{ route('folding_gate_sparepart_order_view') }}?id=' + full.id + '">VIEW</a>\
+                  return '<a class="btn2" href="{{ route('folding_gate_sparepart_order_view') }}?id=' + full.id + '">LIHAT</a>\
                           <a class="btn2" href="{{ route('folding_gate_sparepart_order_edit') }}?id=' + full.id + '">EDIT</a>\
-                          <a class="btn2" href="{{ route('folding_gate_sparepart_order_delete') }}?id=' + full.id + '">DELETE</a>\
+                          <a class="btn2" href="{{ route('folding_gate_sparepart_order_delete') }}?id=' + full.id + '">HAPUS</a>\
                           <a class="btn2" target="_blank" href="{{ route('print_folding_gate_sparepart_order') }}?id=' + full.id + '">PDF</a>'
                           }}
                   <?php
@@ -56,7 +56,7 @@ $(function() {
                   else
                   {
                     ?>
-                  return '<a class="btn2" href="{{ route('folding_gate_sparepart_order_view') }}?id=' + full.id + '">VIEW</a>\
+                  return '<a class="btn2" href="{{ route('folding_gate_sparepart_order_view') }}?id=' + full.id + '">LIHAT</a>\
                         <a class="btn2" target="_blank" href="{{ route('print_folding_gate_sparepart_order') }}?id=' + full.id + '">PDF</a>'
                         }}
 

@@ -54,10 +54,10 @@ class GoodReceiptRollingDoorsController extends Controller
         $GoodReceiptRollingDoor->delete_flag = 0;
         
         if($GoodReceiptRollingDoor->save()) {
-            flash('Data succefully saved')->success();
+            flash('Data berhasil disimpan')->success();
             return redirect()->route('good_receipt_rolling_door');
         } else {
-            flash('Data failed to save')->error();
+            flash('Data gagal disimpan')->error();
             return redirect()->route('good_receipt_rolling_door');
         }
     }
@@ -67,14 +67,14 @@ class GoodReceiptRollingDoorsController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('good_receipt_rolling_door');
         }
 
         $content = GoodReceiptRollingDoor::getData($response['id']);
         if(empty($content))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('good_receipt_rolling_door');
         }
 
@@ -109,10 +109,10 @@ class GoodReceiptRollingDoorsController extends Controller
                                         ]);
 
         if($save) {
-            flash('Data succefully updated')->success();
+            flash('Data berhasil diupdate')->success();
             return redirect()->route('good_receipt_rolling_door');
         } else {
-            flash('Data failed to updated')->error();
+            flash('Data gagal diupdate')->error();
             return redirect()->route('good_receipt_rolling_door');
         }
     }
@@ -122,14 +122,14 @@ class GoodReceiptRollingDoorsController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('good_receipt_rolling_door');
         }
 
         $data = GoodReceiptRollingDoor::getData($response['id']);
         if(empty($data))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('good_receipt_rolling_door');
         }
 
@@ -147,10 +147,10 @@ class GoodReceiptRollingDoorsController extends Controller
                                     ]);
 
         if($save) {
-            flash('Data succefully deleted')->success();
+            flash('Data berhasil dihapus')->success();
             return redirect()->route('good_receipt_rolling_door');
         } else {
-            flash('Data failed to deleted')->error();
+            flash('Data gagal dihapus')->error();
             return redirect()->route('good_receipt_rolling_door');
         }
     }

@@ -22,13 +22,13 @@ class ChangePasswordsController extends Controller
 
         if(!Hash::check($response['OldPassword'], $DBpassword))
         {
-            flash('Wrong Old Password')->error();
+            flash('Password lama salah')->error();
             return redirect()->route('change_password');
         }
 
         if($response['NewPassword'] != $response['ConfirmNewPassword'])
         {
-            flash('Password Not Match')->error();
+            flash('Password baru tidak sama dengan konfirmasi')->error();
             return redirect()->route('change_password');
         }
 
@@ -39,12 +39,12 @@ class ChangePasswordsController extends Controller
                     ]);
         if($update)
         {
-            flash('Password succefully changed')->success();
+            flash('Password berhasil diubah')->success();
             return redirect()->route('home');
         }
         else
         {
-            flash('Password change failed')->error();
+            flash('Password gagal diubah')->error();
             return redirect()->route('change_password');
         }
     }

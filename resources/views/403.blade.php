@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-Unauthorized Access
+Akses ditolak
 </div>
 
       

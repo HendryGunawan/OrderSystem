@@ -53,7 +53,7 @@ class RollingDoorOrdersController extends Controller
 
         if(!is_numeric($response['phone']))
         {
-            flash('Phone number must be numbers only')->error();
+            flash('Nomor telepon harus angka')->error();
             return redirect()->route('rolling_door_order');
         }
 
@@ -64,7 +64,7 @@ class RollingDoorOrdersController extends Controller
                 continue;
             }
             if (in_array($val['rolling_door_id'], $array_check)) {
-                flash('Duplicate data found. Please try again')->error();
+                flash('Data ganda ditemukan. Silahkan coba lagi')->error();
                 return redirect()->route('rolling_door_order');
             }
             else
@@ -109,10 +109,10 @@ class RollingDoorOrdersController extends Controller
                                     ->update([
                                         'grand_total' => $grand_total
                                     ]);
-            flash('Data succefully saved')->success();
+            flash('Data berhasil disimpan')->success();
             return redirect()->route('rolling_door_order');
         } else {
-            flash('Data failed to save')->error();
+            flash('Data gagal disimpan')->error();
             return redirect()->route('rolling_door_order');
         }
     }
@@ -122,7 +122,7 @@ class RollingDoorOrdersController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_order');
         }
 
@@ -131,7 +131,7 @@ class RollingDoorOrdersController extends Controller
         $option = RollingDoor::getDataAll();
         if(empty($parent))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_order');
         }
 
@@ -153,7 +153,7 @@ class RollingDoorOrdersController extends Controller
         
         if(!is_numeric($response['phone']))
         {
-            flash('Phone number must be numbers only')->error();
+            flash('Nomor telepon harus angka')->error();
             return redirect()->route('rolling_door_order');
         }
 
@@ -164,7 +164,7 @@ class RollingDoorOrdersController extends Controller
                 continue;
             }
             if (in_array($val['rolling_door_id'], $array_check)) {
-                flash('Duplicate data found. Please try again')->error();
+                flash('Data ganda ditemukan. Silahkan coba lagi')->error();
                 return redirect()->route('rolling_door_order');
             }
             else
@@ -210,10 +210,10 @@ class RollingDoorOrdersController extends Controller
                                     ->update([
                                         'grand_total' => $grand_total
                                     ]);
-            flash('Data succefully updated')->success();
+            flash('Data berhasil diupdate')->success();
             return redirect()->route('rolling_door_order');
         } else {
-            flash('Data failed to update')->error();
+            flash('Data gagal diupdate')->error();
             return redirect()->route('rolling_door_order');
         }
     }
@@ -223,7 +223,7 @@ class RollingDoorOrdersController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_order');
         }
 
@@ -232,7 +232,7 @@ class RollingDoorOrdersController extends Controller
         $option = RollingDoor::getDataAll();
         if(empty($parent))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_order');
         }
 
@@ -256,10 +256,10 @@ class RollingDoorOrdersController extends Controller
                                     ]);
 
         if($save) {
-            flash('Data succefully deleted')->success();
+            flash('Data berhasil dihapus')->success();
             return redirect()->route('rolling_door_order');
         } else {
-            flash('Data failed to deleted')->error();
+            flash('Data gagal dihapus')->error();
             return redirect()->route('rolling_door_order');
         }
     }
@@ -269,7 +269,7 @@ class RollingDoorOrdersController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_order');
         }
 
@@ -278,7 +278,7 @@ class RollingDoorOrdersController extends Controller
         $option = RollingDoor::getDataAll();
         if(empty($parent))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_order');
         }
 

@@ -2,7 +2,7 @@
 
 @section('content')
 <a href="{{ route('folding_gate_sparepart_add') }}">
-   <input type="button" class="btn1" value="+ New Item" />
+   <input type="button" class="btn1" value="Baru" />
 </a>
 
 <div class="container">
@@ -13,9 +13,9 @@
       <table class="table table-bordered" id="folding-gate-sparepart-table">
         <thead>
             <tr>
-                <th>Item Name</th>
-                <th>Unit</th>
-                <th>Price/Unit</th>
+                <th>Nama Barang</th>
+                <th>Satuan</th>
+                <th>Harga/Satuan</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -40,7 +40,7 @@ $(function() {
                 align: 'center',
                 mRender: function (data, type, full) {
                   return '<a class="btn2" href="{{ route('folding_gate_sparepart_edit') }}?id=' + full.id + '">EDIT</a>\
-                          <a class="btn2" href="{{ route('folding_gate_sparepart_delete') }}?id=' + full.id + '">DELETE</a>'
+                          <a class="btn2" href="{{ route('folding_gate_sparepart_delete') }}?id=' + full.id + '">HAPUS</a>'
                           }}
         ],
         initComplete: function () {

@@ -2,7 +2,7 @@
 
 @section('content')
 <a href="{{ route('rolling_door_add') }}">
-   <input type="button" class="btn1" value="+ New Item" />
+   <input type="button" class="btn1" value="Baru" />
 </a>
 
 <div class="container">
@@ -13,9 +13,9 @@
       <table class="table table-bordered" id="rolling-door-table">
         <thead>
             <tr>
-                <th>Item Name</th>
-                <th>Unit</th>
-                <th>Price/Unit</th>
+                <th>Nama Barang</th>
+                <th>Satuan</th>
+                <th>Harga/Satuan</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -40,7 +40,7 @@ $(function() {
                 align: 'center',
                 mRender: function (data, type, full) {
                   return '<a class="btn2" href="{{ route('rolling_door_edit') }}?id=' + full.id + '">EDIT</a>\
-                          <a class="btn2" href="{{ route('rolling_door_delete') }}?id=' + full.id + '">DELETE</a>'
+                          <a class="btn2" href="{{ route('rolling_door_delete') }}?id=' + full.id + '">HAPUS</a>'
                           }}
         ],
         initComplete: function () {

@@ -2,23 +2,23 @@
 
 @section('content')
 <a href="{{ route('good_usage_rolling_door') }}">
-   <input type="button" class="btn1" value="Back" />
+   <input type="button" class="btn1" value="Kembali" />
 </a>
 
 <div class="container">
   <div id="Checkout" class="inline">
-    <h1>View Good Usage Rolling Door Item</h1>
+    <h1>Penggunaan Barang Rolling Door</h1>
       <form id="rolling-door-view" method="GET" action="#" role="form">
-      <label or="Nama">Order Number</label>
+      <label or="Nama">Nomor Pesanan</label>
       <input class="form-control"
              value="FG-<?php echo $header['rolling_door_order_id'] ?>"
              type="text" readonly>
       <table id="mytable" class="table table-striped">
           <thead>
-              <th>Item Name</th>
-              <th>Unit</th>
               <th>Qty</th>
+              <th>Nama Barang</th>
               <th>Size</th>
+              <th>Satuan</th>
           </thead>
           <tbody>
               <?php
@@ -27,16 +27,16 @@
                 ?>
                 <tr>
                   <td>
-                      <input type="text" class="form-control" value="<?php echo $child_value['ItemName'] ?>" readonly>
-                  </td>
-                  <td>
-                      <input type="text" class="form-control" value="<?php echo $child_value['UnitName'] ?>" readonly>
-                  </td>
-                  <td>
                       <input type="text" class="form-control" value="<?php echo $child_value['qty'] ?>" readonly>
                   </td>
                   <td>
+                      <input type="text" class="form-control" value="<?php echo $child_value['ItemName'] ?>" readonly>
+                  </td>
+                  <td>
                       <input type="text" class="form-control" value="<?php echo $child_value['size'] ?>" readonly>
+                  </td>
+                  <td>
+                      <input type="text" class="form-control" value="<?php echo $child_value['UnitName'] ?>" readonly>
                   </td>
               </tr>
               <?php
@@ -45,15 +45,15 @@
           </tbody>
       </table>
 
-      Detail Usage:
+      Rincian Penggunaan:
       <section class="tabs-section">
         <div role="tabpanel" class="tab-pane" id="realization">
             <br/>              
               <table id="tableRequest" class="table table-striped">
                   <thead> 
                     <div class="row m-t-lg">
-                      <div class="col-md-5"><label class="form-label">Item Code</label></div>
-                      <div class="col-md-5"><label class="form-label">Length (meters)</label></div>
+                      <div class="col-md-5"><label class="form-label">Kode Barang</label></div>
+                      <div class="col-md-5"><label class="form-label">Panjang (meter)</label></div>
                     </div>
                   </thead>
                   <tbody>

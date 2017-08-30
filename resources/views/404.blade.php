@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-Access Not Found
+Akses tidak ditemukan
 </div>
 
       

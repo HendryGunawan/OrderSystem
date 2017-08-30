@@ -69,7 +69,7 @@ class GoodUsageRollingDoorsController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('good_usage_rolling_door');
         }
 
@@ -79,7 +79,7 @@ class GoodUsageRollingDoorsController extends Controller
 
         if(!empty($check_already_registered))
         {
-            flash('Order Already Registered in the list')->error();
+            flash('Order sudah pernah dipakai dalam daftar')->error();
             return redirect()->route('good_usage_rolling_door');
         }
 
@@ -87,7 +87,7 @@ class GoodUsageRollingDoorsController extends Controller
         $ItemCode = GoodReceiptRollingDoor::where('delete_flag', 0)->select('item_code')->distinct()->get();
         if(empty($content))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('good_usage_rolling_door');
         }
 
@@ -106,7 +106,7 @@ class GoodUsageRollingDoorsController extends Controller
         foreach($response['detail'] as $val)
         {
             if (in_array($val['item_code'], $array_check)) {
-                flash('Duplicate data found. Please try again')->error();
+                flash('Data ganda ditemukan. Silahkan coba lagi')->error();
                 return redirect()->route('good_usage_rolling_door');
             }
             else
@@ -130,11 +130,11 @@ class GoodUsageRollingDoorsController extends Controller
                 $GoodUsageRollingDoorDetail->length = $value['length'];
                 $GoodUsageRollingDoorDetail->save();
             }
-            flash('Data succefully saved')->success();
+            flash('Data berhasil disimpan')->success();
             return redirect()->route('good_usage_rolling_door');
         }
         else {
-            flash('Data failed to save')->error();
+            flash('Data gagal disimpan')->error();
             return redirect()->route('good_usage_rolling_door');
         }
     }
@@ -144,14 +144,14 @@ class GoodUsageRollingDoorsController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('good_usage_rolling_door');
         }
 
         $header = GoodUsageRollingDoor::getData($response['id']);
         if(empty($header))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('good_usage_rolling_door');
         }
         $child = GoodUsageRollingDoorDetail::getData($response['id']);
@@ -172,7 +172,7 @@ class GoodUsageRollingDoorsController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('good_usage_rolling_door');
         }
 
@@ -180,7 +180,7 @@ class GoodUsageRollingDoorsController extends Controller
         $child = GoodUsageRollingDoorDetail::getData($response['id']);
         if(empty($header))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('good_usage_rolling_door');
         }
         $data = [
@@ -201,10 +201,10 @@ class GoodUsageRollingDoorsController extends Controller
                                     ]);
 
         if($save) {
-            flash('Data succefully deleted')->success();
+            flash('Data berhasil dihapus')->success();
             return redirect()->route('good_usage_rolling_door');
         } else {
-            flash('Data failed to deleted')->error();
+            flash('Data gagal dihapus')->error();
             return redirect()->route('good_usage_rolling_door');
         }
     }

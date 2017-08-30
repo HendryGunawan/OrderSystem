@@ -2,13 +2,13 @@
 
 @section('content')
 <a href="{{ route('good_usage_rolling_door') }}">
-   <input type="button" class="btn1" value="Back" />
+   <input type="button" class="btn1" value="Kembali" />
 </a>
 
 <div class="container">
   <div id="Checkout" class="inline">
 
-      <h1>Delete Good Usage Rolling Door Item</h1>
+      <h1>Hapus Penggunaan Barang Rolling Door</h1>
       <form id="rolling-door-delete" method="POST" action="{{ route('good_usage_rolling_door_delete_post') }}" role="form">
       {{ csrf_field() }}
       <input type="hidden" name='id' value="{{$header['id']}}"></input>
@@ -24,8 +24,8 @@
               <table id="tableRequest" class="table table-striped">
                   <thead> 
                     <div class="row m-t-lg">
-                      <div class="col-md-5"><label class="form-label">Item Code</label></div>
-                      <div class="col-md-5"><label class="form-label">Length (meters)</label></div>
+                      <div class="col-md-5"><label class="form-label">Kode Barang</label></div>
+                      <div class="col-md-5"><label class="form-label">Panjang (meter)</label></div>
                     </div>
                   </thead>
                   <tbody>
@@ -64,7 +64,7 @@
       </section>
 
           <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit">
-              <span class="align-middle">Delete</span>
+              <span class="align-middle">Hapus</span>
           </button>
       </form>
   </div>

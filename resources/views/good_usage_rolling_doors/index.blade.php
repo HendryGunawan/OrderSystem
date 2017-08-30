@@ -2,19 +2,19 @@
 
 @section('content')
 <a href="{{ route('good_usage_select_order_number_rolling_door') }}">
-   <input type="button" class="btn1" value="+ New" />
+   <input type="button" class="btn1" value="+ Baru" />
 </a>
 
 <div class="container">
    @include('flash::message')
   <div id="Checkout" class="inline">
 
-      <h1>Good Usage Rolling Door Items</h1>
+      <h1>Penggunaan Barang Rolling Door</h1>
       <table class="table table-bordered" id="good-usage-rolling-door-table">
         <thead>
             <tr>
-                <th>Order Number</th>
-                <th>Created Date</th>
+                <th>Nomor Pesanan</th>
+                <th>Tanggal Dibuat</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -41,15 +41,15 @@ $(function() {
                   if(strtolower(Auth::user()->role->name) == 'super admin')
                   {
                   ?>
-                  return '<a class="btn2" href="{{ route('good_usage_rolling_door_view') }}?id=' + full.id + '">VIEW</a>\
-                          <a class="btn2" href="{{ route('good_usage_rolling_door_delete') }}?id=' + full.id + '">DELETE</a>\
+                  return '<a class="btn2" href="{{ route('good_usage_rolling_door_view') }}?id=' + full.id + '">LIHAT</a>\
+                          <a class="btn2" href="{{ route('good_usage_rolling_door_delete') }}?id=' + full.id + '">HAPUS</a>\
                           <a class="btn2" target="_blank" href="{{ route('print_good_usage_rolling_door') }}?id=' + full.id + '">PDF</a>'
                   <?php
                   }
                   else
                   {
                   ?>
-                    return '<a class="btn2" href="{{ route('good_usage_rolling_door_view') }}?id=' + full.id + '">VIEW</a>';
+                    return '<a class="btn2" href="{{ route('good_usage_rolling_door_view') }}?id=' + full.id + '">LIHAT</a>';
                   <?php
                   }
                   ?>  

@@ -53,7 +53,7 @@ class RollingDoorSparepartOrdersController extends Controller
 
         if(!is_numeric($response['phone']))
         {
-            flash('Phone number must be numbers only')->error();
+            flash('Nomor telepon harus angka')->error();
             return redirect()->route('rolling_door_sparepart_order');
         }
 
@@ -109,10 +109,10 @@ class RollingDoorSparepartOrdersController extends Controller
                                     ->update([
                                         'grand_total' => $grand_total
                                     ]);
-            flash('Data succefully saved')->success();
+            flash('Data berhasil disimpan')->success();
             return redirect()->route('rolling_door_sparepart_order');
         } else {
-            flash('Data failed to save')->error();
+            flash('Data gagal disimpan')->error();
             return redirect()->route('rolling_door_sparepart_order');
         }
     }
@@ -122,7 +122,7 @@ class RollingDoorSparepartOrdersController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_sparepart_order');
         }
 
@@ -131,7 +131,7 @@ class RollingDoorSparepartOrdersController extends Controller
         $option = RollingDoorSparepart::getDataAll();
         if(empty($parent))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_sparepart_order');
         }
 
@@ -153,7 +153,7 @@ class RollingDoorSparepartOrdersController extends Controller
         
         if(!is_numeric($response['phone']))
         {
-            flash('Phone number must be numbers only')->error();
+            flash('Nomor telepon harus angka')->error();
             return redirect()->route('rolling_door_sparepart_order');
         }
 
@@ -209,10 +209,10 @@ class RollingDoorSparepartOrdersController extends Controller
                                     ->update([
                                         'grand_total' => $grand_total
                                     ]);
-            flash('Data succefully updated')->success();
+            flash('Data berhasil diupdate')->success();
             return redirect()->route('rolling_door_sparepart_order');
         } else {
-            flash('Data failed to update')->error();
+            flash('Data gagal diupdate')->error();
             return redirect()->route('rolling_door_sparepart_order');
         }
     }
@@ -222,7 +222,7 @@ class RollingDoorSparepartOrdersController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_sparepart_order');
         }
 
@@ -231,7 +231,7 @@ class RollingDoorSparepartOrdersController extends Controller
         $option = RollingDoorSparepart::getDataAll();
         if(empty($parent))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_sparepart_order');
         }
 
@@ -255,10 +255,10 @@ class RollingDoorSparepartOrdersController extends Controller
                                     ]);
 
         if($save) {
-            flash('Data succefully deleted')->success();
+            flash('Data berhasi dihapus')->success();
             return redirect()->route('rolling_door_sparepart_order');
         } else {
-            flash('Data failed to deleted')->error();
+            flash('Data gagal dihapus')->error();
             return redirect()->route('rolling_door_sparepart_order');
         }
     }
@@ -268,7 +268,7 @@ class RollingDoorSparepartOrdersController extends Controller
         $response = $request->all();
         if(!isset($response['id']))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_sparepart_order');
         }
 
@@ -277,7 +277,7 @@ class RollingDoorSparepartOrdersController extends Controller
         $option = RollingDoorSparepart::getDataAll();
         if(empty($parent))
         {
-            flash('Data not found')->error();
+            flash('Data tidak ditemukan')->error();
             return redirect()->route('rolling_door_sparepart_order');
         }
 
