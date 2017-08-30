@@ -33,7 +33,7 @@
                   <th>Qty</th>
                   <th>Nama Barang</th>
                   <th>Harga/Satuan</th>
-==                <th>Size</th>
+                  <th>Size</th>
                   <th>Satuan</th>
               </thead>
               <tbody>

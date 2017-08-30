@@ -2,7 +2,7 @@
 
 @section('content')
 <a href="{{ route('folding_gate_sparepart_order') }}">
-   <input type="button" class="btn1" value="Back" />
+   <input type="button" class="btn1" value="Kembali" />
 </a>
 
 <div class="container">

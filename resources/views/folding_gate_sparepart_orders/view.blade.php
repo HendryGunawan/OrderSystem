@@ -2,7 +2,7 @@
 
 @section('content')
 <a href="{{ route('folding_gate_sparepart_order') }}">
-   <input type="button" class="btn1" value="Back" />
+   <input type="button" class="btn1" value="Kembali" />
 </a>
 
 <div class="container">
@@ -11,20 +11,20 @@
       <form id="folding-gate-sparepart-order-view" method="POST" action="#" role="form">
       {{ csrf_field() }}
           <div class="form-group">
-              <label or="Date">Date</label>
+              <label or="Date">Tanggal</label>
               <input type="hidden" value="<?php echo $parent['id'] ?>" name="id"></input>
               <input name="date" type="text" class="form-control" id="datetimepicker2" maxlength="10" value="<?php echo date('d-m-Y', strtotime($parent['date'])) ?>" readonly required></input>
           </div>
           <div class="form-group">
-              <label or="Nama">Name</label>
+              <label or="Nama">Nama</label>
               <input name="name" class="form-control" type="text" maxlength="255" value="<?php echo $parent['name'] ?>" readonly required></input>
           </div>
           <div class="form-group">
-              <label or="Address">Address</label>
+              <label or="Address">Alamat</label>
               <input name="address" class="form-control" type="text" maxlength="255" value="<?php echo $parent['address'] ?>" readonly required></input>
           </div>
           <div class="form-group">
-              <label or="Phone">Phone Number</label>
+              <label or="Phone">Nomor Telepon</label>
               <input name="phone" class="form-control" type="text" maxlength="255" value="<?php echo $parent['phone_number'] ?>" readonly required></input>
           </div>
           <div class="form-group">
@@ -35,10 +35,10 @@
           <table id="mytable" class="table table-striped">
               <thead>
                   <th>Qty</th>
-                  <th>Item Name</th>
-                  <th>Price/Unit</th>
+                  <th>Nama Barang</th>
+                  <th>Harga/Satuan</th>
                   <th>Size</th>
-                  <th>Unit</th>
+                  <th>Satuan</th>
                   <th>Subtotal</th>
               </thead>
               <tbody>
