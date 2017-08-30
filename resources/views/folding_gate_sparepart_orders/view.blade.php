@@ -34,11 +34,11 @@
 
           <table id="mytable" class="table table-striped">
               <thead>
+                  <th>Qty</th>
                   <th>Item Name</th>
                   <th>Price/Unit</th>
-                  <th>Unit</th>
-                  <th>Qty</th>
                   <th>Size</th>
+                  <th>Unit</th>
                   <th>Subtotal</th>
               </thead>
               <tbody>
@@ -48,19 +48,19 @@
                     ?>
                     <tr data-id="<?php echo $key ?>">
                       <td>
+                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $key ?>][qty]" value="<?php echo $child_value['qty'] ?>" readonly>
+                      </td>
+                      <td>
                           <input type="text" class="form-control" name="order[<?php echo $key ?>][FoldingGateSparepartName]" min="0" value="<?php echo $child_value['ItemName'] ?>" readonly>
                       </td>
                       <td>
                           <input type="text" id="price-<?php echo $key ?>" class="form-control" name="order[<?php echo $key ?>][price]" min="0" value="<?php echo number_format($child_value['price']) ?>" readonly>
                       </td>
                       <td>
-                          <input type="text" id="unit-<?php echo $key ?>" class="form-control" value="<?php echo $child_value['UnitName'] ?>" readonly>
-                      </td>
-                      <td>
-                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $key ?>][qty]" value="<?php echo $child_value['qty'] ?>" readonly>
-                      </td>
-                      <td>
                           <input type="text" id="fee-4" class="form-control" name="order[<?php echo $key ?>][size]" value="<?php echo $child_value['size'] ?>" readonly>
+                      </td>
+                      <td>
+                          <input type="text" id="unit-<?php echo $key ?>" class="form-control" value="<?php echo $child_value['UnitName'] ?>" readonly>
                       </td>
                       <td>
                           <input type="text" id="fee-4" class="form-control" name="order[<?php echo $key ?>][size]" value="<?php echo number_format($child_value['price'] * $child_value['qty'] * $child_value['size']) ?>" readonly>

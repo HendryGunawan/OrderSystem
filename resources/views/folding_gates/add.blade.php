@@ -11,11 +11,11 @@
       <form id="folding-gate-add" method="POST" action="{{ route('folding_gate_add_post') }}" role="form">
       {{ csrf_field() }}
           <div class="form-group">
-              <label or="Nama">Nama Barang</label>
+              <label or="Nama">Item Name</label>
               <input name="name" class="form-control" type="text" maxlength="255" required></input>
           </div>
           <div class="form-group">
-              <label for="satuan">Satuan</label>
+              <label for="satuan">Unit</label>
               <select name="unit_id" class="form-control">
                 <?php
                 foreach ($option as $value) {
@@ -25,7 +25,7 @@
               </select>
           </div>
           <div class="zip-code-group form-group">
-              <label for="satuan">Harga Satuan</label>
+              <label for="satuan">Price</label>
               <div class="input-container">
                   <input name="price" class="form-control price" type="text" maxlength="10" required></input>
               </div>

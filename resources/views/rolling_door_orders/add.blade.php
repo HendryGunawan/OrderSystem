@@ -29,11 +29,11 @@
 
           <table id="mytable" class="table table-striped">
               <thead>
+                  <th>Qty</th>
                   <th>Item Name</th>
                   <th>Price/Unit</th>
-                  <th>Unit</th>
-                  <th>Qty</th>
                   <th>Size</th>
+                  <th>Unit</th>
               </thead>
               <tbody>
                   <?php
@@ -41,6 +41,9 @@
                   {
                     ?>
                     <tr data-id="<?php echo $i ?>">
+                      <td>
+                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $i ?>][qty]" <?php echo $i==1? 'required':''?>>
+                      </td>
                       <td>
                           <select name="order[<?php echo $i ?>][rolling_door_id]" class="form-control ItemName" onclick="checkprice(this)" <?php echo $i==1? 'required':''?>>
                               <option value="" selected="selected"></option>
@@ -55,13 +58,10 @@
                           <input type="number" id="price-<?php echo $i ?>" class="form-control no-spin" name="order[<?php echo $i ?>][price]" min="0" <?php echo $i==1? 'required':''?>>
                       </td>
                       <td>
-                          <input type="text" id="unit-<?php echo $i ?>" class="form-control" readonly>
-                      </td>
-                      <td>
-                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $i ?>][qty]" <?php echo $i==1? 'required':''?>>
-                      </td>
-                      <td>
                           <input type="text" id="fee-4" class="form-control" name="order[<?php echo $i ?>][size]" <?php echo $i==1? 'required':''?>>
+                      </td>
+                      <td>
+                          <input type="text" id="unit-<?php echo $i ?>" class="form-control" readonly>
                       </td>
                   </tr>
                   <?php

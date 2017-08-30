@@ -30,11 +30,11 @@
 
           <table id="mytable" class="table table-striped">
               <thead>
+                  <th>Qty</th>
                   <th>Item Name</th>
                   <th>Price/Unit</th>
-                  <th>Unit</th>
-                  <th>Qty</th>
                   <th>Size</th>
+                  <th>Unit</th>
               </thead>
               <tbody>
                   <?php
@@ -42,6 +42,9 @@
                   {
                     ?>
                     <tr data-id="<?php echo $key ?>">
+                      <td>
+                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $key ?>][qty]" value="<?php echo $child_value['qty'] ?>" <?php echo $key==0? 'required':''?>>
+                      </td>
                       <td>
                           <select name="order[<?php echo $key ?>][rolling_door_id]" class="form-control ItemName" onclick="checkprice(this)" <?php echo $key==0? 'required':''?>>
                               <option value=""></option>
@@ -65,13 +68,10 @@
                           <input type="number" id="price-<?php echo $key ?>" class="form-control" name="order[<?php echo $key ?>][price]" min="<?php echo $child_value['MinPrice'] ?>" value="<?php echo $child_value['price'] ?>" <?php echo $key==0? 'required':''?>>
                       </td>
                       <td>
-                          <input type="text" id="unit-<?php echo $key ?>" class="form-control" value="<?php echo $child_value['UnitName'] ?>" readonly>
-                      </td>
-                      <td>
-                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $key ?>][qty]" value="<?php echo $child_value['qty'] ?>" <?php echo $key==0? 'required':''?>>
-                      </td>
-                      <td>
                           <input type="text" id="fee-4" class="form-control" name="order[<?php echo $key ?>][size]" value="<?php echo $child_value['size'] ?>" <?php echo $key==0? 'required':''?>>
+                      </td>
+                      <td>
+                          <input type="text" id="unit-<?php echo $key ?>" class="form-control" value="<?php echo $child_value['UnitName'] ?>" readonly>
                       </td>
                   </tr>
                   <?php
@@ -82,6 +82,9 @@
                   {
                     ?>
                     <tr data-id="<?php echo $i ?>">
+                      <td>
+                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $i ?>][qty]">
+                      </td>
                       <td>
                           <select name="order[<?php echo $i ?>][rolling_door_id]" class="form-control ItemName" onclick="checkprice(this)">
                               <option value="" selected="selected"></option>
@@ -96,13 +99,10 @@
                           <input type="number" id="price-<?php echo $i ?>" class="form-control" name="order[<?php echo $i ?>][price]" min="0">
                       </td>
                       <td>
-                          <input type="text" id="unit-<?php echo $i ?>" class="form-control" readonly>
-                      </td>
-                      <td>
-                          <input type="text" id="fee-3" class="form-control" name="order[<?php echo $i ?>][qty]">
-                      </td>
-                      <td>
                           <input type="text" id="fee-4" class="form-control" name="order[<?php echo $i ?>][size]">
+                      </td>
+                      <td>
+                          <input type="text" id="unit-<?php echo $i ?>" class="form-control" readonly>
                       </td>
                   </tr>
                   <?php

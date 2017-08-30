@@ -37,6 +37,11 @@
     font-size: 75%;
 }
 
+.half {
+    width:100%;
+    height:45%;
+}
+
 * {
  font-family: Courier;
 }
@@ -46,6 +51,7 @@
 
 
 <div class="container">
+<div class="half">
 <h4>SURAT JALAN &amp; ORDER</h4>
 <table class="form-control table">
   <tr>
@@ -96,7 +102,7 @@
 
  </table>
 
- <p class="font">NOTE: BARANG YANG SUDAH DITERIMA TIDAK DAPAT DITUKAR ATAU DIKEMBALIKAN,BARANG TELAH DITERIMA DENGAN BAIK DAN LENGKAP</p>
+ <p class="font">NOTE: BARANG YANG SUDAH DITERIMA TIDAK DAPAT DITUKAR ATAU DIKEMBALIKAN, BARANG TELAH DITERIMA DENGAN BAIK DAN LENGKAP</p>
 
  <table class="form-control table">
   <tr>
@@ -124,11 +130,11 @@
     <td class="td2">(&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )</td>
   </tr>
  </table>
-
+</div>
 
 <br>
 
-
+<div class="half">
 <h4>FAKTUR</h4>
 <table class="form-control table">
   <tr>
@@ -214,6 +220,6 @@
   </tr>
  </table>
 
-
+</div>
 
 </div>
