@@ -123,7 +123,25 @@ function checkprice(row)
     });
 }
 
-$('#datetimepicker2').datetimepicker({ format: 'DD-MM-YYYY' });
+$('#datetimepicker2').datepicker({ 
+    format: 'dd-mm-yyyy',
+    autoclose: true
+});
+
+
+$("#datetimepicker2").keydown(function (e) {
+    // Allow: backspace, delete, tab, escape, enter and .
+    // if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1) 
+    // {
+    //    // let it happen, don't do anything
+    //    return;
+    // }
+    // else
+    // {
+    //   e.preventDefault();
+    // }
+    e.preventDefault();
+});
 
 $(".phone-number").keydown(function (e) {
   if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {

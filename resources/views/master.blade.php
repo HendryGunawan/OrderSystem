@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{ asset('css/demo.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
         <!-- <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
 <!--         <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/responsive.bootstrap.min.css') }}"> -->
@@ -25,7 +25,7 @@
         <script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
         <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('js/moment-with-locales.js') }}"></script>
-        <script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
+        <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
         <script src="{{ asset('js/handlebars.min.js') }}"></script>
         
         <!-- <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> -->

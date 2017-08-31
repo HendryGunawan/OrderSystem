@@ -10,7 +10,7 @@
       <h1>Tambah Pesanan Folding Gate</h1>
       <form id="folding-gate-order-add" method="POST" action="{{ route('folding_gate_order_add_post') }}" role="form" onsubmit="return checkform();">
       {{ csrf_field() }}
-          <div class="form-group">
+          <div class="form-group" style="position:relative">
               <label or="Date">Tanggal</label>
               <input name="date" type="text" class="form-control" id="datetimepicker2" maxlength="10" required></input>
           </div>
@@ -126,7 +126,10 @@ function checkprice(row)
 
 }
 
-$('#datetimepicker2').datetimepicker({ format: 'DD-MM-YYYY' });
+$('#datetimepicker2').datepicker({ 
+    format: 'dd-mm-yyyy',
+    autoclose: true
+});
 
 
 $("#datetimepicker2").keydown(function (e) {
