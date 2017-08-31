@@ -25,16 +25,16 @@
                 ?>
                 <tr>
                   <td>
-                      <input type="text" class="form-control" value="<?php echo $child_value['ItemName'] ?>" readonly>
-                  </td>
-                  <td>
-                      <input type="text" class="form-control" value="<?php echo $child_value['UnitName'] ?>" readonly>
-                  </td>
-                  <td>
                       <input type="text" class="form-control" value="<?php echo $child_value['qty'] ?>" readonly>
                   </td>
                   <td>
+                      <input type="text" class="form-control" value="<?php echo $child_value['ItemName'] ?>" readonly>
+                  </td>
+                  <td>
                       <input type="text" class="form-control" value="<?php echo $child_value['size'] ?>" readonly>
+                  </td>
+                  <td>
+                      <input type="text" class="form-control" value="<?php echo $child_value['UnitName'] ?>" readonly>
                   </td>
               </tr>
               <?php
